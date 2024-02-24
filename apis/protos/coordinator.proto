@@ -1,0 +1,37 @@
+syntax = "proto3";
+package coordinator_service;
+import "global.proto";
+option go_package = 
+  "github.com/tonychill/ifitu/apis/pb/go/coordinator_service";
+// https://cloud.google.com/iam/docs/
+// https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html
+
+service CoordinatorService {
+  
+}
+
+message GetCurationRequest {
+  global.Query query = 2;
+  
+  // st joun home with 4 beds for a group of 8 ranging between 200 - 500 
+  // for the week. 
+  string page_token = 3;
+  int32 page = 4;
+  int32 page_size = 5;
+  /** Example query: 
+  *  "rate_range": "[500-1000]",
+  *  "rate_interval": "hourly|daily|weekly|monthly",
+  *  "rate_currency": "USD|EUR|GBP|BTC|ETH",
+  *  "location_names": "st. john, st. thomas, jamaica, ...",
+  *  "location_geos": "[18.12345,64.35465],[18.12345,64.35465],...",
+  *  "location_raduis": "50mi,25mi...",
+  */
+  // map<string, string > client_events = 6; 
+  /** Example client events:
+  *  "viewed": "true",
+  *  "bookmarked": "true",
+  *  "bookmarked_at": "2019-01-01T00:00:00Z",
+  *  "bookmarked_at_range": "[2019-01-01T00:00:00Z-2019-01-01T00:00:00Z]",
+  *  "bookmarked_at_interval": "hourly|daily|weekly|monthly",
+  */
+}

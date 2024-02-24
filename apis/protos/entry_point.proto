@@ -1,0 +1,8 @@
+syntax = "proto3";
+package entry_point;
+
+option go_package = "github.com/tonychill/ifitu/apis/pb/go/entry_point";
+
+service EntryPoint {
+
+}

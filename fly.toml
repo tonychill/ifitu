@@ -1,0 +1,27 @@
+# fly.toml app configuration file generated for ifitu on 2024-02-24T15:18:42-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'ifitu'
+primary_region = 'iad'
+
+[build]
+
+[env]
+  SVC_HTTP_PORT = ":3000"
+  SVC_GRPC_PORT= ":50001"
+  FINANCE_PAYMENTS= "payments"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1

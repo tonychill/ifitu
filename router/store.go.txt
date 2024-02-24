@@ -1,0 +1,83 @@
+package router
+
+import (
+	"context"
+	"fmt"
+	"time"
+)
+
+type storeImpl struct {
+	// sync.Mutex
+	m map[string]item
+	// TODO: add redis and have methods update the db
+}
+
+func (r *routerImpl) initStore(ctx context.Context) error {
+	r.store = &storeImpl{
+		m: make(map[string]item),
+	}
+	return nil
+}
+
+type item struct {
+	val []byte
+	exp time.Duration
+}
+
+func (s *storeImpl) GetKeys() []string {
+
+	var keys []string
+	for k := range s.m {
+		keys = append(keys, k)
+	}
+	return keys
+}
+
+func (s *storeImpl) Get(key string) ([]byte, error) {
+
+	item, ok := s.m[key]
+	if !ok {
+		return nil, fmt.Errorf("key %s not found in store", key)
+	}
+	return item.val, nil
+}
+
+// Set stores the given value for the given key along
+// with an expiration value, 0 means no expiration.
+// Empty key or value will be ignored without an error.
+func (s *storeImpl) Set(key string, val []byte, exp time.Duration) error {
+
+	if key == "" {
+		return nil
+	}
+
+	fmt.Printf("*** TESTING:  setting key %s with val %s", key, val)
+
+	s.m[key] = item{
+		val: val,
+		exp: exp,
+	}
+	return nil
+}
+
+// Delete deletes the value for the given key.
+// It returns no error if the storage does not contain the key,
+func (s *storeImpl) Delete(key string) error {
+
+	delete(s.m, key)
+	return nil
+}
+
+// Reset resets the storage and delete all keys.
+func (s *storeImpl) Reset() error {
+
+	s.m = make(map[string]item)
+	return nil
+}
+
+// Close closes the storage and will stop any running garbage
+// collectors and open connections.
+func (s *storeImpl) Close() error {
+
+	return nil
+}

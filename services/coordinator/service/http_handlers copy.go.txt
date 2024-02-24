@@ -1,0 +1,86 @@
+package service
+
+import (
+	"context"
+	"encoding/json"
+
+	"github.com/gofiber/fiber/v2"
+	pb "github.com/tonychill/ifitu/apis/pb/go/coordinator_service"
+	jnyPb "github.com/tonychill/ifitu/apis/pb/go/journeys"
+	opsPb "github.com/tonychill/ifitu/apis/pb/go/operations"
+	"github.com/rs/zerolog/log"
+	"google.golang.org/protobuf/encoding/protojson"
+)
+
+func (s *ServiceImpl) handleCreateExperienceFlow(ctx context.Context, expFlow *pb.CreateExperienceFlow) error {
+	// call resource service
+	resourceId, err := s.createResource(ctx, expFlow.Resource)
+	xblock
+	if err != nil {
+		log.Error().Msgf("error creating resource during creation flow: %v", err)
+		return err
+	}
+
+	log.Debug().Msgf("resource created with id %s", resourceId)
+	// create expeirence in journey service
+	experienceId, err := s.createExperience(ctx, expFlow.Experience)
+	if err != nil {
+		log.Error().Msgf("error creating experience during creation flow: %v", err)
+		return err
+	}
+	log.Debug().Msgf("experience created with id: %s", experienceId)
+	// create calendar in calendar service (could be async)
+
+	// return success or failure
+	return nil
+}
+
+func (s *ServiceImpl) createResource(ctx context.Context, r *opsPb.Resource) (string, error) {
+	agent := fiber.Post(s.OperationsServiceAddress + "/create-resource")
+	agent = agent.JSON(&opsPb.CreateResourceRequest{
+		Resource: r,
+	})
+	code, body, errs := agent.Bytes()
+	if len(errs) > 0 {
+		log.Error().Msgf("error creating resource at line 43: %v", errs)
+		return "", errs[0]
+	}
+
+	if code != 200 {
+		log.Error().Msgf("got an error when attempting to create a resource: %d | body: %s", code, body)
+		return "", nil
+
+	}
+
+	log.Debug().Msgf("status code: %d | body: %s", code, body)
+
+	resp := &opsPb.CreateResourceResponse{}
+	if err := protojson.Unmarshal(body, resp); err != nil {
+		log.Error().Msgf("error unmarshalling data: %v", errs)
+		return "", err
+	}
+	log.Debug().Msgf("data from creating resource: %v", resp)
+	return "", nil
+}
+
+func (s *ServiceImpl) createExperience(ctx context.Context, r *jnyPb.Experience) (string, error) {
+
+	agent := fiber.Post(s.JourneyServiceAddress)
+	agent = agent.JSON(&jnyPb.CreateExperienceRequest{
+		Experience: r,
+	})
+	code, body, errs := agent.Bytes()
+	if len(errs) > 0 {
+		log.Error().Msgf("error getting resource: %v", errs)
+		return "", errs[0]
+	}
+
+	log.Debug().Msgf("status code: %d | body: %s", code, body)
+
+	var data fiber.Map
+	if err := json.Unmarshal(body, &data); err != nil {
+		return "", err
+	}
+	log.Debug().Msgf("data from creating resource: %v", data)
+	return "", nil
+}

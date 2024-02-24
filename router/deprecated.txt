@@ -1,0 +1,42 @@
+func (r *routerImpl) handleCheckFlowStatus(c *fiber.Ctx) error {
+	req := &conSvc.CheckFlowStatusRequest{}
+	if err := c.BodyParser(req); err != nil {
+		return err
+	}
+
+	resp, err := r.conSvc.CheckFlowStatus(context.Background(), req)
+	if err != nil {
+		// do something
+		log.Error().Msgf("error checking the flow status via the coordinator: %v", err)
+	}
+	return c.JSON(resp)
+	// return c.SendString("Here are your coordinator!")
+}
+
+func (r *routerImpl) handleInitiateFlow(c *fiber.Ctx) error {
+	req := &conSvc.InitiateFlowRequest{}
+	if err := protojson.Unmarshal(c.Body(), req); err != nil {
+		return err
+	}
+
+	_, err := getAllContentFromCtx(c, "image")
+	if err != nil {
+		log.Error().Err(err).Msg("error getting all content from context when handling the initiate flow request")
+		// log.Error().Err(err).Msg("image upload error")
+		// return c.JSON(fiber.Map{"status": 500, "message": "Server error", "data": nil})
+
+	}
+	// log.Debug().Msgf("contnet from upload: %+v", content)
+
+	// TODO: ctx := contextFromRequest(c)
+	ctx := context.Background()
+
+	// TODO: req = addContentToRequest(req, content)
+	id, err := r.conSvc.InitiateFlow(ctx, req)
+	if err != nil {
+		return err
+	}
+	return c.SendString(fmt.Sprintf("Flow created with id %s", id))
+}
+
+r.app.Get("/check-flow-status", r.handleCheckFlowStatus)

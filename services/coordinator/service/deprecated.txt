@@ -1,0 +1,61 @@
+func (s *ServiceImpl) InitiateFlow(ctx context.Context, r *conSvc.InitiateFlowRequest) (*conSvc.InitiateFlowResponse, error) {
+	if r == nil {
+		return nil, globals.ErrRequestNil
+	}
+
+	log.Debug().Msgf("Initiating flow: %+v", r.Flow)
+
+	// Saving the flow initiates the state of the flow with the coordinator
+	flowId, err := s.repo.SaveFlow(ctx, r.Flow)
+	if err != nil {
+		return nil, err
+	}
+
+	resp := &conSvc.InitiateFlowResponse{
+		FlowId: flowId,
+	}
+
+	switch {
+	case r.Flow.GetCreateExperienceFlow() != nil:
+		expFlow := r.Flow.GetCreateExperienceFlow()
+		experienceId, err := s.createExperience(ctx, expFlow.Experience)
+		if err != nil {
+			resp.FlowStatus = &conSvc.FlowStatus{
+				State: conSvc.FlowState_FLOW_STATE_IN_PROGRESS,
+				Errors: []*global.Error{
+					{
+						Code:    "500",
+						Message: err.Error(),
+					},
+				},
+			}
+
+			return nil, err
+		}
+
+		// todo: return flow status
+		// update flow status
+		resp.Metadata = make(map[string]string)
+		resp.Metadata["experienceId"] = experienceId
+
+		log.Debug().Msgf("experience created with id: %s", experienceId)
+
+	}
+
+	return resp, nil
+}
+
+func (s *ServiceImpl) CheckFlowStatus(ctx context.Context, r *conSvc.CheckFlowStatusRequest) (*conSvc.CheckFlowStatusResponse, error) {
+	stats, err := s.repo.GetFlowStatus(ctx, r)
+	if err != nil {
+		return nil, err
+	}
+	return &conSvc.CheckFlowStatusResponse{
+		FlowStatus: stats[0],
+	}, nil
+}
+
+func (s *ServiceImpl) SubscribeToFlow(*conSvc.SubscribeToFlowRequest, conSvc.ConciergeService_SubscribeToFlowServer) error {
+	return nil
+}
+
