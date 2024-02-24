@@ -1,0 +1,575 @@
+syntax = "proto3";
+package global;
+option go_package = "github.com/tonychill/ifitu/apis/pb/go/global";
+
+// A dynamic abstraction of one or more options that a resource may provide.
+// For example, a yacht charter may be offered as a single
+//  experience but it may have multiple options such as a day charter, a week
+//  charter, a month charter, etc.
+// TODO: an experience is an entity. how should we handle the definition and
+// placement of it? 
+
+message Customer {
+  string id = 1;
+  string user_name = 2; 
+  string first_name = 3;
+  string last_name = 4;
+  string email = 5;
+  string phone = 6;
+  int64 date_of_birth = 7; 
+  int64 created_at = 8;
+  int64 updated_at = 9;
+  int64 deleted_at = 10;
+  global.Address address = 11; // guests can update their addresses
+  string profile_image_url = 12;
+  // add alergies as top line item
+  // repeated Preference preferences = 13;
+  // Note above the persona property.
+  // Persona persona = 14; // Part fo the truth engine
+  // string gender = 15;
+  repeated string role_ids = 16; 
+  repeated string policy_ids = 17;
+  repeated string crew_ids = 18;
+  // TODO: add permssions
+}
+
+
+message Experience {
+  string id = 1; 
+  string partner_id = 2;
+  string name = 3; 
+  string description = 4;
+  ExperienceType type = 5; 
+  repeated Content media = 6;
+  int64 start_date = 7;
+  int64 end_date = 8;
+  repeated string tags = 9; 
+  repeated Rule rules = 10;
+  repeated Rate rates = 11;
+  repeated Feature features = 12;
+  repeated Space spaces = 13;
+  repeated Impression impressions = 14;
+  repeated Comment comments = 15;
+  repeated Location locations = 16;
+  repeated Calendar calendars = 17;
+  repeated Customer customers = 18; 
+}
+
+message Confirmation {
+  string experience_id = 1; 
+  int64 experience_total = 2;
+  int64 share_of_total = 3;
+  string payment_method_id = 4; 
+  ConfirmationStatus status = 5;
+  string client_secret = 6; 
+  Currency currency = 7;  
+}
+
+enum ConfirmationStatus {
+  CONFIRMATION_STATUS_UNSPECIFIED = 0; 
+  CONFIRMATION_STATUS_INITIATED = 2;
+  CONFIRMATION_STATUS_PENDING = 3;
+  CONFIRMATION_STATUS_CONFIRMED = 4;
+  CONFIRMATION_STATUS_CANCELLED = 5;
+}
+message Comment {
+  string id = 1; 
+  string owner_id = 2;
+  string partner_id = 3;
+  string entity_id = 4;
+  string entity_type = 5;
+  string body = 6;
+  string created_at = 7;
+  string updated_at = 8;
+  string deleted_at = 9;
+}
+
+message Feature {
+  string id = 1; 
+  string name = 2; 
+  string description = 3;
+  string type = 4; // service, location, etc,
+  string created_at = 5;
+  string updated_at = 6;
+  string deleted_at = 7;
+}
+
+message Rate {
+  string id = 1;
+  string partner_id = 2;  
+  string name = 3; 
+  string description = 4;
+  repeated string experiences = 5; //type:id
+  RateType rate_type = 6;
+  int64 start_date = 7;
+  int64 end_date = 8;
+  int64 amount = 9;  // allways in cents
+  Currency currency = 10;
+  // TODO: add number of guests, number of hours, etc.
+  RateFrequency frequency = 11;
+  map<string, string> metadata = 12;
+  int64 created_at = 13;
+  int64 updated_at = 14;
+}
+
+enum Currency {
+  CURRENCY_UNSPECIFIED = 0;
+  CURRENCY_USD = 1;
+  CURRENCY_EUR = 2;
+  CURRENCY_XCD = 3;
+  // CURRENCY_GBP = 3;
+  // CURRENCY_AUD = 4;
+  // CURRENCY_CAD = 5;
+  // CURRENCY_CHF = 6;
+  // CURRENCY_CNY = 7;
+  // CURRENCY_DKK = 8;
+  // CURRENCY_HKD = 9;
+  // CURRENCY_INR = 10;
+  // CURRENCY_JPY = 11;
+  // CURRENCY_MXN = 12;
+  // CURRENCY_NOK = 13;
+  // CURRENCY_NZD = 14;
+  // CURRENCY_PLN = 15;
+  // CURRENCY_SEK = 16;
+  // CURRENCY_SGD = 17;
+  // CURRENCY_ZAR = 18;
+}
+
+enum RateFrequency {
+  RATE_FREQUENCY_UNSPECIFIED = 0;
+  RATE_FREQUENCY_ONCE = 1;
+  RATE_FREQUENCY_DAILY = 2;
+  RATE_FREQUENCY_WEEKLY = 3;
+  RATE_FREQUENCY_BIWEEKLY = 4;
+  RATE_FREQUENCY_MONTHLY = 5;
+  RATE_FREQUENCY_QUARTERLY = 6;
+  RATE_FREQUENCY_SEMIANNUALLY = 7;
+  RATE_FREQUENCY_ANNUALLY = 8;
+  RATE_FREQUENCY_CUSTOM = 9;
+
+}
+enum RateType {
+  RATE_TYPE_UNSPECIFIED = 0;
+  RATE_TYPE_EXPERIENCE = 1;
+  RATE_TYPE_TAX = 2;
+  RATE_TYPE_DISCOUNT = 3;
+  RATE_TYPE_EXPERIENCE_FEE = 4;
+  RATE_TYPE_DEPOSIT = 5;
+  RATE_TYPE_CREDIT = 6;
+  RATE_TYPE_ADJUSTMENT = 7;
+  RATE_TYPE_OTHER = 8;
+}
+
+message TaxRate {
+  string id = 1; 
+    // tax props... [country, rate, created_at...]
+}
+
+enum ExperienceType {
+  EXPERIENCE_TYPE_UNSPECIFIED = 0;
+  EXPERIENCE_TYPE_STAY = 1;
+  EXPERIENCE_TYPE_EATS = 2;
+  EXPERIENCE_TYPE_ACTIVITY = 3;
+  // EXPERIENCE_TYPE_EXCURSION = 3;
+  EXPERIENCE_TYPE_EVENT = 4;
+  EXPERIENCE_TYPE_CAR_RENTAL = 5;
+  // TODO: are flights and rides the same thing? Don't think 
+  // people feel that way
+  EXPERIENCE_TYPE_RIDE = 6; 
+  EXPERIENCE_TYPE_FLIGHT = 7;
+  EXPERIENCE_TYPE_SERVICE = 8;
+// EXPERIENCE_TYPE_YACHT_CHARTER
+}
+
+message TelematicUpdate {
+  string id = 1;
+  string type = 2;
+  string description = 3;
+  int64 timestamp = 4;
+  Location location = 5;
+  string prev_update_id = 6;
+  string next_update_id = 7;
+  map<string, string> metadata = 15;
+}
+
+message Location {
+  string id = 1; 
+  string name = 2; 
+  string description = 3;
+  Address address = 4;
+  Geo geo = 5;
+  LocationType type = 6;
+  // TODO: add prev && next bearfing?? 
+
+  
+}
+
+enum LocationType {
+  LOCATION_TYPE_UNSPECIFIED = 0;
+  LOCATION_TYPE_BASE = 1;
+  LOCATION_TYPE_IN_TRANSIT = 2;
+  LOCATION_TYPE_IN_WAY_POINT = 3;
+  LOCATION_TYPE_DESTINATION = 4;
+  LOCATION_TYPE_PICKUP = 5;
+  LOCATION_TYPE_DROPOFF = 6;
+  LOCATION_TYPE_OTHER = 7;
+}
+message Geo {
+  float latitude = 1;
+  float longitude = 2;
+  float altitude = 3;
+  float speed = 4;
+  float heading = 5;
+  float accuracy = 6;
+}
+
+message Address {
+  string street = 1;
+  string street_2 = 2; 
+  string city = 3; 
+  string state = 4; 
+  string country = 5; 
+  string zip = 6;
+}
+
+// Meant to be super flexible to allow for any type of query
+// still with some level of static typing. 
+message Query {
+  repeated Term terms = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+  Order order = 4;
+} 
+
+message Term {
+  // TODO: make type an enum: [string, int, float, bool, 
+  // date, time, datetime, geo, address, phone, email, url, uuid, id]\
+  string key = 1;
+  string value = 2; 
+  // int64 weight = 4;
+}
+
+enum Order {
+  ORDER_UNSPECIFIED = 0;
+  ORDER_ASC = 1;
+  ORDER_DESC = 2;
+}
+
+message Rating {
+  string id = 1;
+  string guest_id = 2;
+  string partner_id = 3;
+  string project_id = 4;
+  int32 score = 5;
+  string comment = 6;
+  string created_at = 7;
+  string updated_at = 8;
+  string deleted_at = 9;
+  oneof rating_type {
+    string sample = 10;
+        // HotelRating hotel_rating = 10;
+        // RoomRating room_rating = 11;
+  }
+}
+
+enum CreatorType { // TODO: update to EntityType
+  CREATOR_TYPE_UNSPECIFIED = 0;
+  CREATOR_TYPE_GUEST = 1;
+  CREATOR_TYPE_PARTNER = 2;
+  CREATOR_TYPE_CONCIERGE = 3;
+}
+// TODO: look in to analytics tracking
+message Impression {
+  string id = 1; 
+  int64 duration = 2; 
+  Source source = 3; // TODO: or are guests the only sources for impressions? 
+}
+
+message Source {
+  string id = 1; 
+    // oneof type {
+    //     users.Guest guest = 3; 
+
+    // }
+}
+
+// enum Relationship {
+//   RELATIONSHIP_UNSPECIFIED = 0;
+//   RELATIONSHIP_EMPLOYEE_OF = 1;
+// }
+
+/* A calendar is a collection of related events, as well as additional 
+metadata that defines it. Each  
+calendar is identified by an ID which is an email address. Calendars 
+can have multiple owners. When a reservation is created a calendar is 
+created as well and tied to the reservation. */
+message Calendar {
+  string id = 1;
+  string owner_id = 2;
+  string resource_id = 3; 
+  string name = 4; 
+  string description = 5;
+  int64 created_at = 6;
+  int64 updated_at = 7;
+  repeated global.Rule rules = 8;
+  repeated Event events = 9;
+  /*
+    owner_id
+    repeated Guests owners = x; 
+    reservation_id 
+    rules
+    repeated Event events
+    Days/Slots
+    repeated Guest viewers
+  string time_zone
+  string description
+    */
+}
+
+//An event is an object associated with a specific date or time range. 
+message Event {
+  string id = 1; 
+  Calendar primary_calendar = 2; // The calendar the governs the event. 
+  // Calendars where the event would show i.e. calendars of attending guests. 
+  repeated Calendar associated_calendars = 3; 
+    /*
+    start_date
+    end_date
+    ....
+  string description 
+    Status status
+    repeated Reminder reminders 
+    repeated Attatchment attachments
+    int64 start_time = x; 
+    int64 end_time = x; 
+    Location location = x; 
+    Guest organizer = x;
+    repeated Guest guests = x; 
+
+   */
+}
+
+message Note {
+  string guest_id = 1;
+  string partner_id = 2;
+  string project_id = 3;
+  string title = 4;
+  string body = 5;
+  string created_at = 6;
+  string updated_at = 7;
+  string deleted_at = 8;
+  // TODO: implement private notes
+
+}
+
+message Error {
+  string code = 1;
+  string message = 2;
+  int64 timestamp = 3;
+}
+
+message Rule {
+  string id = 1;
+  string name = 2; // boats required
+  string description = 3; // describes what the rule is for
+  int64 start_time = 4; // always in milliseconds 
+  int64 end_time = 5; //  -1 means never ends
+  Entity principal = 6; // applied to
+  repeated Option options = 7;
+  // type??
+}
+// boat entity and captain entity
+message Option {
+  string name = 1;
+  string description = 2;
+  bool required = 3;
+  Entity entity = 4; 
+}
+
+
+/*
+experience reqires a member from captains:1253#members
+*/
+
+message Caveat {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  int64 start_time = 4; 
+  int64 end_time = 5; 
+}
+
+message Entity {
+  string id = 1; // Optional when applied to a rule as an option
+  string name = 2; 
+  string description = 3;
+  bool required = 4;
+  EntityType type = 5; // Always required
+  string role = 6;
+  int64 start_time = 7; // the epoch time in seconds when the rule should start
+  int64 end_time = 8; // the epoch time in seconds when the rule should end
+  repeated Permission permissions = 9; // relation
+}
+
+message Permission {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  bool allow = 4; 
+  int64 start_time = 5; 
+  int64 end_time = 6; 
+}
+
+enum EntityType {
+  // option, rate, guest, resource, experience, journey, community, etc...
+  ENTITY_TYPE_UNSPECIFIED = 0;
+  ENTITY_TYPE_GUEST = 1;
+  ENTITY_TYPE_PARTNER = 2;
+  ENTITY_TYPE_EVENT = 3;
+  ENTITY_TYPE_PROJECT = 4;
+  ENTITY_TYPE_RESOURCE = 5;
+  ENTITY_TYPE_NOTIFICATION = 6;
+  ENTITY_TYPE_JOURNEY = 7;
+  ENTITY_TYPE_EXPERIENCE = 8;
+  ENTITY_TYPE_QUALIFICATION = 9;
+  // ENTITY_TYPE_APP = 3;
+  // ENTITY_TYPE_CREW = 4;
+  // ENTITY_TYPE_CIRCLE = 5;
+  // ENTITY_TYPE_POLICY = 6;
+  // ENTITY_TYPE_ROLE = 7;
+  // ENTITY_TYPE_RESOURCE = 8;
+  // ENTITY_TYPE_RULE = 9;
+  // ENTITY_TYPE_SESSION = 10;
+}
+
+enum ResourceType {
+  RESOURCE_TYPE_UNSPECIFIED = 0;
+  RESOURCE_TYPE_PROPERTY = 1; // hotel, venue, home, etc.
+  RESOURCE_TYPE_VESSEL = 2;
+  RESOURCE_TYPE_VEHICLE = 3;
+  RESOURCE_TYPE_AIRCRAFT = 4;
+  RESOURCE_TYPE_EQUIPMENT = 5;
+  RESOURCE_TYPE_MEMBER = 6;
+  RESOURCE_TYPE_OTHER = 14;
+}
+
+enum Day {
+  DAY_UNSPECIFIED = 0;  
+  DAY_SUNDAY = 1;
+  DAY_MONDAY = 2;
+  DAY_TUESDAY = 3;
+  DAY_WEDNESDAY = 4;
+  DAY_THURSDAY = 5;
+  DAY_FRIDAY = 6;
+  DAY_SATURDAY = 7;
+}
+
+
+
+enum ContentType {
+  CONTENT_TYPE_UNSPECIFIED = 0;
+  CONTENT_TYPE_IMAGE = 1;
+  CONTENT_TYPE_VIDEO = 2;
+  CONTENT_TYPE_AUDIO = 3;
+  CONTENT_TYPE_DOCUMENT = 4;
+}
+
+message Content {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string url = 4;
+  string mime_type = 5;
+  int64 size = 6; // in bytes
+  bytes data = 7;
+  string creator_id = 8;
+  CreatorType creator_type = 9;
+  int64 created_at = 10;
+  repeated Impression impressions = 11; 
+  ContentType content_type = 12;
+  map<string, string> metadata = 13;
+  repeated string associations = 14; // TODO: work on
+}
+
+
+// TODO: do we need this? 
+message ContentPacket {  
+  int64 current_packets_total = 1; 
+  // int64 current_packets_sent = 1; 
+  Content media = 2; 
+}
+
+message Space {
+  string id = 1; 
+  string name = 2;
+  string description = 3;
+  SpaceType type = 4; 
+  SpaceSubType sub_type = 5;
+  int32 guest_capacity = 6;
+  Size size = 7;
+  int64 level = 8;
+  repeated global.Content media = 9;
+  repeated Amenity amenities = 10;
+  // Some spaces have inner inner spaces such as a master bedroom 
+  // having a  bathroom.
+  repeated Space spaces = 11; 
+  /**
+  string building_id = 4;
+  string floor_id = 5; 
+  int32 floor_level = 6;
+  */
+  // data is used to store the specific data for a space type.
+  map<string, string> attributes = 15;
+}
+
+
+message Amenity {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string type = 4;
+}
+
+
+enum SpaceType {
+  SPACE_TYPE_UNSPECIFIED = 0;
+  SPACE_TYPE_BEDROOM = 1;
+  SPACE_TYPE_BATHROOM = 2;
+  SPACE_TYPE_KITCHEN = 3;
+  SPACE_TYPE_LIVING = 4;
+  SPACE_TYPE_POOL = 5;
+  SPACE_TYPE_AREA = 6;
+  SPACE_TYPE_SEAT = 7;
+  SPACE_TYPE_LOFT = 8;
+  SPACE_TYPE_DECK = 9;
+}
+
+
+enum SpaceSubType {
+  SPACE_SUB_TYPE_UNSPECIFIED = 0;
+  SPACE_SUB_TYPE_PARKING = 1;
+  SPACE_SUB_TYPE_ROOM = 2; 
+  SPACE_SUB_TYPE_PENTHOUSE = 3; 
+  SPACE_SUB_TYPE_ROOF = 4; 
+  SPACE_SUB_TYPE_GROUND = 5;
+  SPACE_SUB_TYPE_BASEMENT = 6;
+  SPACE_SUB_TYPE_LOBBY = 7;
+  SPACE_SUB_TYPE_STORY = 8;
+}
+
+message Size {
+  int32 width = 1;
+  int32 length = 2;
+  int32 height = 3;
+  int32 depth = 4;
+}
+
+message ExperienceConfirmationsRequest {
+  string journey_id = 1;
+  repeated Confirmation confirmations = 2;
+}
+
+message ExperienceConfirmationsResponse {
+  string journey_id = 1;
+  repeated Confirmation confirmations = 2;
+}

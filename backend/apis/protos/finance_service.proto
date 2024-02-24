@@ -1,0 +1,116 @@
+syntax = "proto3";
+package finance_service; 
+import "finance.proto";
+import "global.proto";
+option go_package = "github.com/tonychill/ifitu/apis/pb/go/finance_service";
+
+
+service FinanceService {
+  rpc InitiateExperienceConfirmations(global.ExperienceConfirmationsRequest) 
+    returns (global.ExperienceConfirmationsResponse);
+  
+  rpc UpdateExperienceConfirmations(global.ExperienceConfirmationsRequest) 
+    returns (global.ExperienceConfirmationsResponse);
+  
+  rpc DeleteExperienceConfirmations(global.ExperienceConfirmationsRequest) 
+    returns (global.ExperienceConfirmationsResponse);
+  
+  rpc CreateRates(CreateRatesRequest) returns (CreateRatesResponse);
+  rpc GetRates(GetRatesRequest) returns (GetRatesResponse);
+  rpc GetTransaction(GetTransactionRequest) returns (GetTransactionResponse);
+  rpc GetPayments(GetPaymentsRequest) returns (GetPaymentsResponse);
+  rpc AddPaymentMethod(AddPaymentMethodRequest) 
+    returns (AddPaymentMethodResponse);
+  rpc GetPaymentMethods(GetPaymentMethodsRequest) 
+    returns (GetPaymentMethodsResponse);
+  rpc RemovePaymentMethod(RemovePaymentMethodRequest) 
+    returns (RemovePaymentMethodResponse);
+  rpc SaveAuthorization(SaveAuthorizationRequest) 
+  returns (SaveAuthorizationResponse);
+  rpc CaptureFunds(CaptureFundsRequest) returns (CaptureFundsResponse);
+  rpc GetPayroll(GetPayrollRequest) returns (GetPayrollResponse);
+  
+}
+
+
+message GetRatesRequest {
+  global.Query query = 1;
+}
+message GetRatesResponse {
+  repeated global.Rate rates = 1;
+}
+
+message CreateRatesRequest {
+  repeated global.Rate rates = 1;
+}
+
+message CreateRatesResponse {  
+  repeated string rate_ids = 1;
+}
+
+message AddPaymentMethodRequest {
+  finance.PaymentMethod payment_method = 1;
+}
+
+message RemovePaymentMethodRequest {
+  string guest_id = 1; 
+  string payment_method_id =2; 
+}
+
+message GetPaymentMethodsRequest {
+  global.Query query = 1; 
+}
+
+message GetPaymentMethodsResponse {
+  repeated finance.PaymentMethod payment_methods = 1;
+}
+
+message AddPaymentMethodResponse {
+  finance.PaymentMethod payment_method = 1;
+}
+
+message RemovePaymentMethodResponse {
+}
+
+message SaveAuthorizationRequest {
+  string guest_id = 1;
+  string payment_id = 2;
+  string journey_id = 3;
+  int64  amount = 4;
+}
+
+message SaveAuthorizationResponse {
+  finance.Payment payment = 1;
+}
+
+message CaptureFundsRequest {
+  string id = 1;
+  int64  amount = 2;
+}
+
+message CaptureFundsResponse {
+  finance.Payment payment = 1;
+}
+
+message GetPayrollRequest {
+
+}
+message GetPayrollResponse {
+
+}
+message GetPaymentsRequest {
+
+}
+message GetPaymentsResponse {
+
+}
+
+
+message GetTransactionRequest {
+  string id = 1;
+  global.Query query = 2;
+}
+message GetTransactionResponse {
+  repeated finance.Transaction transactions = 1; 
+}
+

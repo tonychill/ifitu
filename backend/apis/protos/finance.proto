@@ -1,0 +1,176 @@
+syntax = "proto3";
+package finance; 
+import "global.proto";
+option go_package = "github.com/tonychill/ifitu/apis/pb/go/finance";
+
+
+message Transfer {
+
+}
+message Invoice {
+  string id = 1; 
+  int32 total = 2; 
+  repeated LineItem line_items = 3; 
+}
+
+message Statement {
+  string id = 1; 
+  int32 total = 2; 
+  repeated LineItem line_items = 3; 
+}
+
+message Bill {
+  string id = 1; 
+  int32 total = 2; 
+  repeated LineItem line_items = 3; 
+}
+
+message Transaction {
+  string id = 1; 
+  int32 total = 2; 
+  repeated LineItem line_items = 3; 
+}
+
+message LineItem {
+  string id = 1; 
+  string account = 2; 
+  string code = 3;
+  int32 quantity = 4;
+  int32 unit_price = 5;  
+  string name = 6; 
+  string description = 7;
+  int32 amount = 8; 
+  global.Currency currency = 9;
+  // TODO: maybe this should just be an item as it already has a type of tax 
+  // or should/could it be a list of rates? 
+  global.Rate item_rate = 10;
+  global.Rate tax_rate = 11; 
+
+  string reference = 12; // FIXME: ?? reference to what?
+  map<string, string> attributes = 13; 
+
+}
+
+message ExperienceTuple {
+  string name = 2; 
+  string description = 3;
+  int32 quantity = 4;
+  int32 unit_price = 5;  
+  int32 amount = 6; 
+
+}
+
+message Finance {
+  string id = 1;
+}
+
+message Payroll {
+  string crew_id = 1;
+}
+
+
+message Payment {
+  string id = 1;
+  string guest_id = 2;
+  string journey_id = 3;
+  string customer_id = 4;
+  string payment_id = 5;
+  int64  amount = 6;
+  int64  amount_refunded = 7;
+  int64  amount_captured = 8;
+  int64  auth_date = 9;
+  int64  capture_date = 10;
+  int64  refund_date = 11;
+  PaymentStatus status = 12;
+  PaymentFailureCode failure_code = 13;
+  string failure_message = 14;
+  PaymentIntent payment_intent = 15;
+}
+
+enum PaymentFailureCode {  // https://stripe.com/docs/error-codes
+  PAYMENT_FAILURE_CODE_UNSPECIFIED = 0; // default value, so no failure
+  PAYMENT_FAILURE_CODE_NONE = 1; // default value, so no failure
+  PAYMENT_FAILURE_CODE_OTHER = 2; // not one of the items listed below
+  PAYMENT_FAILURE_CODE_CLOSED = 3;
+  PAYMENT_FAILURE_CODE_ACCOUNT_INVALID = 4;
+  PAYMENT_FAILURE_CODE_ACCOUNT_NUMBER_INVALID = 5;
+  PAYMENT_FAILURE_CODE_ACCOUNT_COUNTRY_INVALID_ADDRESS = 6;
+  PAYMENT_FAILURE_CODE_ACCOUNT_INFORMATION_MISMATCH = 7;
+  PAYMENT_FAILURE_CODE_AMOUNT_TOO_LARGE = 8;
+  PAYMENT_FAILURE_CODE_CAPTURE_CHARGE_AUTHORIZATION_EXPIRE = 9;
+  PAYMENT_FAILURE_CODE_CAPTURE_UNAUTHORIZED_PAYMENT = 10;
+  PAYMENT_FAILURE_CODE_CARD_DECLINED = 11;
+  PAYMENT_FAILURE_CODE_CHARGE_ALREADY_CAPTURED = 12;
+  PAYMENT_FAILURE_CODE_CHARGE_ALREADY_REFUNDED = 13;
+  PAYMENT_FAILURE_CODE_CHARGE_DISPUTED = 14;
+  PAYMENT_FAILURE_CODE_CHARGE_EXPIRED_FOR_CAPTURE = 15;
+  PAYMENT_FAILURE_CODE_CHARGE_NOT_REFUNDABLE = 16;
+  PAYMENT_FAILURE_CODE_COUNTRY_UNSUPPORTED = 17;
+  PAYMENT_FAILURE_CODE_DEBIT_NOT_AUTHORIZED = 18;
+  PAYMENT_FAILURE_CODE_EXPIRED_CARD = 19;
+  PAYMENT_FAILURE_CODE_INCORRECT_ADDRESS = 20;
+  PAYMENT_FAILURE_CODE_INCORRECT_CVC = 21;
+  PAYMENT_FAILURE_CODE_INCORRECT_NUMBER = 22;
+  PAYMENT_FAILURE_CODE_INCORRECT_ZIP = 23;
+  PAYMENT_FAILURE_CODE_INSUFFICIENT_FUNDS = 24;
+  PAYMENT_FAILURE_CODE_INVALID_CVC = 25;
+  PAYMENT_FAILURE_CODE_INVALID_EXPIRY_MONTH = 26;
+  PAYMENT_FAILURE_CODE_INVALID_EXPIRY_YEAR = 27;
+  PAYMENT_FAILURE_CODE_INVALID_NUMBER = 28;
+}
+
+enum PaymentStatus {
+  PAYMENT_STATUS_UNSPECIFIED = 0; 
+  PAYMENT_STATUS_PENDING = 1; // has been authorized and awaiting capture
+  PAYMENT_STATUS_SUCCEEDED = 2; // captured
+  PAYMENT_STATUS_FAILED = 3;
+  PAYMENT_STATUS_REFUNDED = 4;
+  PAYMENT_STATUS_CANCELED = 5;
+}
+
+message PaymentIntent {
+  string id = 1;
+  int64  amount = 2;
+  int64  amount_capturable = 3;
+  string status = 4;
+}
+
+message PaymentMethod {
+  string id = 1;
+  string guest_id = 2;
+  string customer_id = 3;
+  string vendor_id = 4;
+  string last_four = 5;
+  string brand = 6;
+  string country = 7;
+  int32  exp_month = 8;
+  int32  exp_year = 9;
+  
+  PaymentMethodType   type = 10;
+}
+
+enum PaymentMethodType {
+  PAYMENT_METHOD_TYPE_UNSPECIFIED = 0;
+  PAYMENT_METHOD_TYPE_CARD = 1;
+}
+
+// event source events
+message PaymentAuthorized {
+  Payment payment = 1;
+}
+
+message PaymentCaptured {
+  Payment payment = 1;
+}
+
+message PaymentRefunded {
+  Payment payment = 1;
+}
+
+message PaymentUpdated {
+  Payment payment = 1;
+}
+
+message PaymentMethodCreated {
+  PaymentMethod payment_method = 1;
+}
