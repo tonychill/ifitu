@@ -19,6 +19,7 @@ func InitializeFinanceService(ctx context.Context) (*ServiceImpl, error) {
 	if repo == nil {
 		return nil, fmt.Errorf("no repo was provided when attempting to initialize the [template] service")
 	}
+
 	return &ServiceImpl{
 		repo: repo,
 	}, nil
