@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for ifitu on 2024-02-24T15:18:42-05:00
+# fly.toml app configuration file generated for ifitu on 2024-02-24T22:02:37-05:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -9,21 +9,19 @@ primary_region = 'iad'
 [build]
 
 [env]
-  SVC_HTTP_PORT = ":3000"
-  SVC_GRPC_PORT= ":50001"
-  FINANCE_PAYMENTS= "payments"
-  ENV = "staging"
-  REDIS_CONN_URL = "redis://default:2RGSenbytZ1Zt1YixQdAXWx45sNxHULA@redis-17432.c281.us-east-1-2.ec2.cloud.redislabs.com:17432"
-  REDIS_USERNAME = "default"
-  REDIS_PASSWORD = "2RGSenbytZ1Zt1YixQdAXWx45sNxHULA"
-  COORDINATOR_FLOWS = "local_flows"
-  GRAPH_DB_ADDRESS = "localhost:7474"
-  SESSION_SECRET_KEY = "secret"
-  GOOGLE_CLIENT_ID = "id"
-  GOOGLE_CLIENT_SECRET = "secret"
+  COORDINATOR_FLOWS = 'local_flows'
+  ENV = 'staging'
+  FINANCE_PAYMENTS = 'payments'
+  GOOGLE_CLIENT_ID = 'id'
+  GOOGLE_CLIENT_SECRET = 'secret'
+  GRAPH_DB_ADDRESS = 'localhost:7474'
+  REDIS_USERNAME = 'default'
+  SESSION_SECRET_KEY = 'secret'
+  SVC_GRPC_PORT = ':50001'
+  SVC_HTTP_PORT = ':3000'
 
 [http_service]
-  internal_port = 8080
+  internal_port = 3000
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true

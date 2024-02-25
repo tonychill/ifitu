@@ -20,7 +20,7 @@ message Customer {
   int64 created_at = 8;
   int64 updated_at = 9;
   int64 deleted_at = 10;
-  global.Address address = 11; // guests can update their addresses
+  Address address = 11; // guests can update their addresses
   string profile_image_url = 12;
   // add alergies as top line item
   // repeated Preference preferences = 13;
@@ -311,7 +311,7 @@ message Calendar {
   string description = 5;
   int64 created_at = 6;
   int64 updated_at = 7;
-  repeated global.Rule rules = 8;
+  repeated Rule rules = 8;
   repeated Event events = 9;
   /*
     owner_id
@@ -508,7 +508,7 @@ message Space {
   int32 guest_capacity = 6;
   Size size = 7;
   int64 level = 8;
-  repeated global.Content media = 9;
+  repeated Content media = 9;
   repeated Amenity amenities = 10;
   // Some spaces have inner inner spaces such as a master bedroom 
   // having a  bathroom.

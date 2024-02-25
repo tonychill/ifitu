@@ -1,0 +1,18 @@
+FROM golang:1.20.3
+ARG OS=linux
+ARG ARCH=aarch_64
+ARG PROTOC_VERSION=21.6
+RUN apt-get update && apt-get install -y unzip
+RUN curl -LO "https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-${OS}-${ARCH}.zip" && \
+    unzip "protoc-${PROTOC_VERSION}-${OS}-${ARCH}.zip" -d $HOME/.local && \
+    mv $HOME/.local/bin/protoc /usr/local/bin/protoc
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
+RUN go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@v1.5.0
+RUN go install github.com/golang/mock/mockgen@v1.6.0
+RUN mkdir -p ../go/pb
+RUN mkdir -p /protos
+COPY bin /usr/local/bin
+COPY *.proto /protos/
+ENTRYPOINT ["/usr/local/bin/protogen.sh"]
+CMD ["golang"]

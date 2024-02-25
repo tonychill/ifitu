@@ -5,7 +5,6 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/rs/zerolog/log"
-	// finSvc "github.com/tonychill/ifitu/apis/pb/go/finance_service"
 	// idSvc "github.com/tonychill/ifitu/apis/pb/go/identity_service"
 	// "github.com/tonychill/ifitu/lib/oauth"
 )
@@ -227,22 +226,6 @@ func (r *routerImpl) addContentToRequest(c *fiber.Ctx, req any) error {
 
 // 	return content, nil
 // }
-
-func (r *routerImpl) handleCreateTask(c *fiber.Ctx) error {
-	// ctx, reqId := setRequestId(c, nil)
-	// req := &idSvc.GetRulesRequest{}
-	// if err := utils.DecodeFiberRequest(c, req); err != nil {
-	// 	log.Error().Err(err).Msgf("handleGetRules -> error decoding client request: %s", c.BodyRaw())
-	// 	return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-	// 		"request_id": reqId,
-	// 		"error":      fmt.Sprintf("Error decoding clients request: %s", err.Error()),
-	// 	})
-	// }
-
-	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"rules": "test",
-	})
-}
 
 func printCookies(c *fiber.Ctx, method string) {
 	fc := c.Context()

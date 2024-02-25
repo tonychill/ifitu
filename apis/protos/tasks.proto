@@ -1,0 +1,54 @@
+syntax = "proto3";
+package tasks; 
+// import "global.proto";
+option go_package = "github.com/tonychill/ifitu/apis/pb/go/tasks";
+
+service TaskService {
+  rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse) {}
+  rpc GetTask(GetTaskRequest) returns (GetTaskResponse) {}
+  rpc ListTasks(ListTasksRequest) returns (ListTasksResponse) {}
+  rpc UpdateTask(UpdateTaskRequest) returns (UpdateTaskResponse) {}
+  rpc DeleteTask(DeleteTaskRequest) returns (DeleteTaskResponse) {}
+}
+
+
+message CreateTaskRequest {
+    string name = 1; 
+}
+
+message CreateTaskResponse {
+    string id = 2; 
+
+}
+
+message GetTaskRequest {
+
+}
+
+message GetTaskResponse {
+
+}
+
+message ListTasksRequest {
+
+}
+
+message ListTasksResponse {
+
+}
+
+message UpdateTaskRequest {
+
+}
+
+message UpdateTaskResponse {
+
+}
+
+message DeleteTaskRequest {
+
+}
+
+message DeleteTaskResponse {
+
+}

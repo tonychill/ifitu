@@ -34,10 +34,12 @@ type repoImpl struct {
 	redisClient     redis.Client
 	shutdown        bool
 	Env             string `envconfig:"ENV"`
-	GraphDbAddress  string `envconfig:"GRAPH_DB_ADDRESS" required:"true"`
+	GraphDbAddress  string `envconfig:"GRAPH_DB_ADDRESS" required:"false"` // FIXME: required, false for now
 	FlowIndexPrefix string `envconfig:"COORDINATOR_FLOWS" required:"true"`
 
 	// pgClient            *pgClient
 	// PgConnStr           string `envconfig:"POSTGRES_DB" required:"true"`
 	// FIXME: deprecate in favor of using the consumer group for tracking
 }
+
+// 2-25T02:54:12.235

@@ -120,6 +120,20 @@
   
     - [Health](#health_check-Health)
   
+- [tasks.proto](#tasks-proto)
+    - [CreateTaskRequest](#tasks-CreateTaskRequest)
+    - [CreateTaskResponse](#tasks-CreateTaskResponse)
+    - [DeleteTaskRequest](#tasks-DeleteTaskRequest)
+    - [DeleteTaskResponse](#tasks-DeleteTaskResponse)
+    - [GetTaskRequest](#tasks-GetTaskRequest)
+    - [GetTaskResponse](#tasks-GetTaskResponse)
+    - [ListTasksRequest](#tasks-ListTasksRequest)
+    - [ListTasksResponse](#tasks-ListTasksResponse)
+    - [UpdateTaskRequest](#tasks-UpdateTaskRequest)
+    - [UpdateTaskResponse](#tasks-UpdateTaskResponse)
+  
+    - [TaskService](#tasks-TaskService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -1966,6 +1980,146 @@ TODO: update to EntityType
 | ----------- | ------------ | ------------- | ------------|
 | Check | [HealthCheckRequest](#health_check-HealthCheckRequest) | [HealthCheckResponse](#health_check-HealthCheckResponse) |  |
 | Watch | [HealthCheckRequest](#health_check-HealthCheckRequest) | [HealthCheckResponse](#health_check-HealthCheckResponse) stream |  |
+
+ 
+
+
+
+<a name="tasks-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## tasks.proto
+
+
+
+<a name="tasks-CreateTaskRequest"></a>
+
+### CreateTaskRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="tasks-CreateTaskResponse"></a>
+
+### CreateTaskResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="tasks-DeleteTaskRequest"></a>
+
+### DeleteTaskRequest
+
+
+
+
+
+
+
+<a name="tasks-DeleteTaskResponse"></a>
+
+### DeleteTaskResponse
+
+
+
+
+
+
+
+<a name="tasks-GetTaskRequest"></a>
+
+### GetTaskRequest
+
+
+
+
+
+
+
+<a name="tasks-GetTaskResponse"></a>
+
+### GetTaskResponse
+
+
+
+
+
+
+
+<a name="tasks-ListTasksRequest"></a>
+
+### ListTasksRequest
+
+
+
+
+
+
+
+<a name="tasks-ListTasksResponse"></a>
+
+### ListTasksResponse
+
+
+
+
+
+
+
+<a name="tasks-UpdateTaskRequest"></a>
+
+### UpdateTaskRequest
+
+
+
+
+
+
+
+<a name="tasks-UpdateTaskResponse"></a>
+
+### UpdateTaskResponse
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="tasks-TaskService"></a>
+
+### TaskService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateTask | [CreateTaskRequest](#tasks-CreateTaskRequest) | [CreateTaskResponse](#tasks-CreateTaskResponse) |  |
+| GetTask | [GetTaskRequest](#tasks-GetTaskRequest) | [GetTaskResponse](#tasks-GetTaskResponse) |  |
+| ListTasks | [ListTasksRequest](#tasks-ListTasksRequest) | [ListTasksResponse](#tasks-ListTasksResponse) |  |
+| UpdateTask | [UpdateTaskRequest](#tasks-UpdateTaskRequest) | [UpdateTaskResponse](#tasks-UpdateTaskResponse) |  |
+| DeleteTask | [DeleteTaskRequest](#tasks-DeleteTaskRequest) | [DeleteTaskResponse](#tasks-DeleteTaskResponse) |  |
 
  
 

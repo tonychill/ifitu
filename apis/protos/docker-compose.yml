@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  go:
+    image: go-protos
+    build:
+      context: .
+      dockerfile: Dockerfile-go
+      args:
+        OS: ${OS:-linux}
+        ARCH: ${ARCH:-aarch_64}
+        PROTOC_VERSION: ${GO_PROTOC_VERSION:-21.6}
+    container_name: go-protos
+    working_dir: /go/src/github.com/tonychill/ifitu/apis/protos
+    volumes:
+      - ../:/go/src/github.com/tonychill/ifitu
+      - ${GOMODCACHE:-~/go/pkg/mod}:/go/pkg/mod
