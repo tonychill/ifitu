@@ -56,6 +56,8 @@
     - [RemovePaymentMethodResponse](#finance_service-RemovePaymentMethodResponse)
     - [SaveAuthorizationRequest](#finance_service-SaveAuthorizationRequest)
     - [SaveAuthorizationResponse](#finance_service-SaveAuthorizationResponse)
+    - [StartCheckoutRequest](#finance_service-StartCheckoutRequest)
+    - [StartCheckoutResponse](#finance_service-StartCheckoutResponse)
   
     - [FinanceService](#finance_service-FinanceService)
   
@@ -892,6 +894,31 @@ https://stripe.com/docs/error-codes
 
 
 
+
+<a name="finance_service-StartCheckoutRequest"></a>
+
+### StartCheckoutRequest
+
+
+
+
+
+
+
+<a name="finance_service-StartCheckoutResponse"></a>
+
+### StartCheckoutResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| session_link | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -906,12 +933,7 @@ https://stripe.com/docs/error-codes
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| InitiateExperienceConfirmations | [.global.ExperienceConfirmationsRequest](#global-ExperienceConfirmationsRequest) | [.global.ExperienceConfirmationsResponse](#global-ExperienceConfirmationsResponse) |  |
-| UpdateExperienceConfirmations | [.global.ExperienceConfirmationsRequest](#global-ExperienceConfirmationsRequest) | [.global.ExperienceConfirmationsResponse](#global-ExperienceConfirmationsResponse) |  |
-| DeleteExperienceConfirmations | [.global.ExperienceConfirmationsRequest](#global-ExperienceConfirmationsRequest) | [.global.ExperienceConfirmationsResponse](#global-ExperienceConfirmationsResponse) |  |
-| CreateRates | [CreateRatesRequest](#finance_service-CreateRatesRequest) | [CreateRatesResponse](#finance_service-CreateRatesResponse) |  |
-| GetRates | [GetRatesRequest](#finance_service-GetRatesRequest) | [GetRatesResponse](#finance_service-GetRatesResponse) |  |
-| GetTransaction | [GetTransactionRequest](#finance_service-GetTransactionRequest) | [GetTransactionResponse](#finance_service-GetTransactionResponse) |  |
+| StartCheckout | [StartCheckoutRequest](#finance_service-StartCheckoutRequest) | [StartCheckoutResponse](#finance_service-StartCheckoutResponse) |  |
 | GetPayments | [GetPaymentsRequest](#finance_service-GetPaymentsRequest) | [GetPaymentsResponse](#finance_service-GetPaymentsResponse) |  |
 | AddPaymentMethod | [AddPaymentMethodRequest](#finance_service-AddPaymentMethodRequest) | [AddPaymentMethodResponse](#finance_service-AddPaymentMethodResponse) |  |
 | GetPaymentMethods | [GetPaymentMethodsRequest](#finance_service-GetPaymentMethodsRequest) | [GetPaymentMethodsResponse](#finance_service-GetPaymentMethodsResponse) |  |

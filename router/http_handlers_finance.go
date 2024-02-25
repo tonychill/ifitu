@@ -23,3 +23,17 @@ func (r *routerImpl) handleAddPayment(c *fiber.Ctx) error {
 		"client_secret": resp.PaymentMethod.CustomerId,
 	})
 }
+
+func (r *routerImpl) handleCheckout(c *fiber.Ctx) error {
+	resp, err := r.finImpl.StartCheckout(c.Context(), &finSvc.StartCheckoutRequest{})
+	if err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "this was bad",
+		})
+	}
+
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"rules":        "test",
+		"session_link": resp.SessionLink,
+	})
+}

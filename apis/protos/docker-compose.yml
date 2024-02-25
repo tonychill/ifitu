@@ -4,7 +4,7 @@ services:
     image: go-protos
     build:
       context: .
-      dockerfile: Dockerfile-go
+      dockerfile: Dockerfile-godadafdafd
       args:
         OS: ${OS:-linux}
         ARCH: ${ARCH:-aarch_64}

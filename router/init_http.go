@@ -136,6 +136,9 @@ func (r *routerImpl) initHttpServer(ctx context.Context, g *errgroup.Group) erro
 	// TODO: In work
 	r.app.Post("/finance/stripe", r.handleStripeWebhook)
 	r.app.Post("/add-payment", r.handleAddPayment)
+	r.app.Post("/checkout", r.handleCheckout)
+	r.app.Post("/webhook/clickup", r.handleCheckout)
+
 
 	// TODO: Deprecating
 	// r.app.Post("/initiate-flow", r.handleInitiateFlow)

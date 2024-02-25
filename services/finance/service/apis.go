@@ -2,7 +2,6 @@ package service
 
 import (
 	"context"
-	"os"
 
 	"github.com/stripe/stripe-go/v76"
 	"github.com/stripe/stripe-go/v76/setupintent"
@@ -10,11 +9,18 @@ import (
 	finSvc "github.com/tonychill/ifitu/apis/pb/go/finance_service"
 )
 
-func (s *ServiceImpl) GetPayments(ctx context.Context, req *finSvc.GetPaymentsRequest) (*finSvc.GetPaymentsResponse, error) {
-	panic("implement me please")
+func (s *ServiceImpl) StartCheckout(ctx context.Context, req *finSvc.StartCheckoutRequest) (*finSvc.StartCheckoutResponse, error) {
+	sesh, err := s.createCheckoutSession(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	return &finSvc.StartCheckoutResponse{
+		SessionLink: sesh.Url,
+	}, nil
 }
+
 func (s *ServiceImpl) AddPaymentMethod(ctx context.Context, req *finSvc.AddPaymentMethodRequest) (*finSvc.AddPaymentMethodResponse, error) {
-	stripe.Key = os.Getenv("STRIPE_SECRET_KEY")
 	params := &stripe.SetupIntentParams{
 		Usage: stripe.String(string(stripe.SetupIntentUsageOffSession)),
 	}

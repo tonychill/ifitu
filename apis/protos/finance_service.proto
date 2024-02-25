@@ -6,18 +6,8 @@ option go_package = "github.com/tonychill/ifitu/apis/pb/go/finance_service";
 
 
 service FinanceService {
-  rpc InitiateExperienceConfirmations(global.ExperienceConfirmationsRequest) 
-    returns (global.ExperienceConfirmationsResponse);
   
-  rpc UpdateExperienceConfirmations(global.ExperienceConfirmationsRequest) 
-    returns (global.ExperienceConfirmationsResponse);
-  
-  rpc DeleteExperienceConfirmations(global.ExperienceConfirmationsRequest) 
-    returns (global.ExperienceConfirmationsResponse);
-  
-  rpc CreateRates(CreateRatesRequest) returns (CreateRatesResponse);
-  rpc GetRates(GetRatesRequest) returns (GetRatesResponse);
-  rpc GetTransaction(GetTransactionRequest) returns (GetTransactionResponse);
+  rpc StartCheckout(StartCheckoutRequest) returns (StartCheckoutResponse);
   rpc GetPayments(GetPaymentsRequest) returns (GetPaymentsResponse);
   rpc AddPaymentMethod(AddPaymentMethodRequest) 
     returns (AddPaymentMethodResponse);
@@ -30,6 +20,13 @@ service FinanceService {
   rpc CaptureFunds(CaptureFundsRequest) returns (CaptureFundsResponse);
   rpc GetPayroll(GetPayrollRequest) returns (GetPayrollResponse);
   
+}
+
+message StartCheckoutRequest {
+
+}
+message StartCheckoutResponse {
+  string session_link = 1;
 }
 
 

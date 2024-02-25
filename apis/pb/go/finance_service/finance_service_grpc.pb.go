@@ -8,7 +8,6 @@ package finance_service
 
 import (
 	context "context"
-	global "github.com/tonychill/ifitu/apis/pb/go/global"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -23,12 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FinanceServiceClient interface {
-	InitiateExperienceConfirmations(ctx context.Context, in *global.ExperienceConfirmationsRequest, opts ...grpc.CallOption) (*global.ExperienceConfirmationsResponse, error)
-	UpdateExperienceConfirmations(ctx context.Context, in *global.ExperienceConfirmationsRequest, opts ...grpc.CallOption) (*global.ExperienceConfirmationsResponse, error)
-	DeleteExperienceConfirmations(ctx context.Context, in *global.ExperienceConfirmationsRequest, opts ...grpc.CallOption) (*global.ExperienceConfirmationsResponse, error)
-	CreateRates(ctx context.Context, in *CreateRatesRequest, opts ...grpc.CallOption) (*CreateRatesResponse, error)
-	GetRates(ctx context.Context, in *GetRatesRequest, opts ...grpc.CallOption) (*GetRatesResponse, error)
-	GetTransaction(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*GetTransactionResponse, error)
+	StartCheckout(ctx context.Context, in *StartCheckoutRequest, opts ...grpc.CallOption) (*StartCheckoutResponse, error)
 	GetPayments(ctx context.Context, in *GetPaymentsRequest, opts ...grpc.CallOption) (*GetPaymentsResponse, error)
 	AddPaymentMethod(ctx context.Context, in *AddPaymentMethodRequest, opts ...grpc.CallOption) (*AddPaymentMethodResponse, error)
 	GetPaymentMethods(ctx context.Context, in *GetPaymentMethodsRequest, opts ...grpc.CallOption) (*GetPaymentMethodsResponse, error)
@@ -46,54 +40,9 @@ func NewFinanceServiceClient(cc grpc.ClientConnInterface) FinanceServiceClient {
 	return &financeServiceClient{cc}
 }
 
-func (c *financeServiceClient) InitiateExperienceConfirmations(ctx context.Context, in *global.ExperienceConfirmationsRequest, opts ...grpc.CallOption) (*global.ExperienceConfirmationsResponse, error) {
-	out := new(global.ExperienceConfirmationsResponse)
-	err := c.cc.Invoke(ctx, "/finance_service.FinanceService/InitiateExperienceConfirmations", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *financeServiceClient) UpdateExperienceConfirmations(ctx context.Context, in *global.ExperienceConfirmationsRequest, opts ...grpc.CallOption) (*global.ExperienceConfirmationsResponse, error) {
-	out := new(global.ExperienceConfirmationsResponse)
-	err := c.cc.Invoke(ctx, "/finance_service.FinanceService/UpdateExperienceConfirmations", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *financeServiceClient) DeleteExperienceConfirmations(ctx context.Context, in *global.ExperienceConfirmationsRequest, opts ...grpc.CallOption) (*global.ExperienceConfirmationsResponse, error) {
-	out := new(global.ExperienceConfirmationsResponse)
-	err := c.cc.Invoke(ctx, "/finance_service.FinanceService/DeleteExperienceConfirmations", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *financeServiceClient) CreateRates(ctx context.Context, in *CreateRatesRequest, opts ...grpc.CallOption) (*CreateRatesResponse, error) {
-	out := new(CreateRatesResponse)
-	err := c.cc.Invoke(ctx, "/finance_service.FinanceService/CreateRates", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *financeServiceClient) GetRates(ctx context.Context, in *GetRatesRequest, opts ...grpc.CallOption) (*GetRatesResponse, error) {
-	out := new(GetRatesResponse)
-	err := c.cc.Invoke(ctx, "/finance_service.FinanceService/GetRates", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *financeServiceClient) GetTransaction(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*GetTransactionResponse, error) {
-	out := new(GetTransactionResponse)
-	err := c.cc.Invoke(ctx, "/finance_service.FinanceService/GetTransaction", in, out, opts...)
+func (c *financeServiceClient) StartCheckout(ctx context.Context, in *StartCheckoutRequest, opts ...grpc.CallOption) (*StartCheckoutResponse, error) {
+	out := new(StartCheckoutResponse)
+	err := c.cc.Invoke(ctx, "/finance_service.FinanceService/StartCheckout", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -167,12 +116,7 @@ func (c *financeServiceClient) GetPayroll(ctx context.Context, in *GetPayrollReq
 // All implementations must embed UnimplementedFinanceServiceServer
 // for forward compatibility
 type FinanceServiceServer interface {
-	InitiateExperienceConfirmations(context.Context, *global.ExperienceConfirmationsRequest) (*global.ExperienceConfirmationsResponse, error)
-	UpdateExperienceConfirmations(context.Context, *global.ExperienceConfirmationsRequest) (*global.ExperienceConfirmationsResponse, error)
-	DeleteExperienceConfirmations(context.Context, *global.ExperienceConfirmationsRequest) (*global.ExperienceConfirmationsResponse, error)
-	CreateRates(context.Context, *CreateRatesRequest) (*CreateRatesResponse, error)
-	GetRates(context.Context, *GetRatesRequest) (*GetRatesResponse, error)
-	GetTransaction(context.Context, *GetTransactionRequest) (*GetTransactionResponse, error)
+	StartCheckout(context.Context, *StartCheckoutRequest) (*StartCheckoutResponse, error)
 	GetPayments(context.Context, *GetPaymentsRequest) (*GetPaymentsResponse, error)
 	AddPaymentMethod(context.Context, *AddPaymentMethodRequest) (*AddPaymentMethodResponse, error)
 	GetPaymentMethods(context.Context, *GetPaymentMethodsRequest) (*GetPaymentMethodsResponse, error)
@@ -187,23 +131,8 @@ type FinanceServiceServer interface {
 type UnimplementedFinanceServiceServer struct {
 }
 
-func (UnimplementedFinanceServiceServer) InitiateExperienceConfirmations(context.Context, *global.ExperienceConfirmationsRequest) (*global.ExperienceConfirmationsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method InitiateExperienceConfirmations not implemented")
-}
-func (UnimplementedFinanceServiceServer) UpdateExperienceConfirmations(context.Context, *global.ExperienceConfirmationsRequest) (*global.ExperienceConfirmationsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateExperienceConfirmations not implemented")
-}
-func (UnimplementedFinanceServiceServer) DeleteExperienceConfirmations(context.Context, *global.ExperienceConfirmationsRequest) (*global.ExperienceConfirmationsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteExperienceConfirmations not implemented")
-}
-func (UnimplementedFinanceServiceServer) CreateRates(context.Context, *CreateRatesRequest) (*CreateRatesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateRates not implemented")
-}
-func (UnimplementedFinanceServiceServer) GetRates(context.Context, *GetRatesRequest) (*GetRatesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetRates not implemented")
-}
-func (UnimplementedFinanceServiceServer) GetTransaction(context.Context, *GetTransactionRequest) (*GetTransactionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTransaction not implemented")
+func (UnimplementedFinanceServiceServer) StartCheckout(context.Context, *StartCheckoutRequest) (*StartCheckoutResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartCheckout not implemented")
 }
 func (UnimplementedFinanceServiceServer) GetPayments(context.Context, *GetPaymentsRequest) (*GetPaymentsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPayments not implemented")
@@ -239,110 +168,20 @@ func RegisterFinanceServiceServer(s grpc.ServiceRegistrar, srv FinanceServiceSer
 	s.RegisterService(&FinanceService_ServiceDesc, srv)
 }
 
-func _FinanceService_InitiateExperienceConfirmations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(global.ExperienceConfirmationsRequest)
+func _FinanceService_StartCheckout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartCheckoutRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FinanceServiceServer).InitiateExperienceConfirmations(ctx, in)
+		return srv.(FinanceServiceServer).StartCheckout(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/finance_service.FinanceService/InitiateExperienceConfirmations",
+		FullMethod: "/finance_service.FinanceService/StartCheckout",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FinanceServiceServer).InitiateExperienceConfirmations(ctx, req.(*global.ExperienceConfirmationsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FinanceService_UpdateExperienceConfirmations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(global.ExperienceConfirmationsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FinanceServiceServer).UpdateExperienceConfirmations(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/finance_service.FinanceService/UpdateExperienceConfirmations",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FinanceServiceServer).UpdateExperienceConfirmations(ctx, req.(*global.ExperienceConfirmationsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FinanceService_DeleteExperienceConfirmations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(global.ExperienceConfirmationsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FinanceServiceServer).DeleteExperienceConfirmations(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/finance_service.FinanceService/DeleteExperienceConfirmations",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FinanceServiceServer).DeleteExperienceConfirmations(ctx, req.(*global.ExperienceConfirmationsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FinanceService_CreateRates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateRatesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FinanceServiceServer).CreateRates(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/finance_service.FinanceService/CreateRates",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FinanceServiceServer).CreateRates(ctx, req.(*CreateRatesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FinanceService_GetRates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetRatesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FinanceServiceServer).GetRates(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/finance_service.FinanceService/GetRates",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FinanceServiceServer).GetRates(ctx, req.(*GetRatesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FinanceService_GetTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTransactionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FinanceServiceServer).GetTransaction(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/finance_service.FinanceService/GetTransaction",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FinanceServiceServer).GetTransaction(ctx, req.(*GetTransactionRequest))
+		return srv.(FinanceServiceServer).StartCheckout(ctx, req.(*StartCheckoutRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -481,28 +320,8 @@ var FinanceService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*FinanceServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "InitiateExperienceConfirmations",
-			Handler:    _FinanceService_InitiateExperienceConfirmations_Handler,
-		},
-		{
-			MethodName: "UpdateExperienceConfirmations",
-			Handler:    _FinanceService_UpdateExperienceConfirmations_Handler,
-		},
-		{
-			MethodName: "DeleteExperienceConfirmations",
-			Handler:    _FinanceService_DeleteExperienceConfirmations_Handler,
-		},
-		{
-			MethodName: "CreateRates",
-			Handler:    _FinanceService_CreateRates_Handler,
-		},
-		{
-			MethodName: "GetRates",
-			Handler:    _FinanceService_GetRates_Handler,
-		},
-		{
-			MethodName: "GetTransaction",
-			Handler:    _FinanceService_GetTransaction_Handler,
+			MethodName: "StartCheckout",
+			Handler:    _FinanceService_StartCheckout_Handler,
 		},
 		{
 			MethodName: "GetPayments",
