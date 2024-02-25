@@ -1,23 +1,20 @@
 package router
 
 import (
-	"fmt"
-
 	"github.com/gofiber/fiber/v2"
-	"github.com/tonychill/ifitu/lib/utils"
 )
 
 func (r *routerImpl) handleCreateTask(c *fiber.Ctx) error {
 	type something struct {
 	}
 
-	some := &something{}
-	if err := utils.DecodeFiberRequest(c, some); err != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"request_id": reqId,
-			"message":    fmt.Sprintf("Error decoding client's request: %s", err.Error()),
-		})
-	}
+	// some := &something{}
+	// if err := utils.DecodeFiberRequest(c, some); err != nil {
+	// 	return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+	// 		"request_id": reqId,
+	// 		"message":    fmt.Sprintf("Error decoding client's request: %s", err.Error()),
+	// 	})
+	// }
 	// Your code here
 	// return c.Status(fiber.StatusOK).JSON(fiber.Map{
 	// 	"rules": "test",
