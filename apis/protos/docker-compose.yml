@@ -4,7 +4,7 @@ services:
     image: go-protos
     build:
       context: .
-      dockerfile: Dockerfile-godadafdafd
+      dockerfile: Dockerfile-go
       args:
         OS: ${OS:-linux}
         ARCH: ${ARCH:-aarch_64}
@@ -13,4 +13,4 @@ services:
     working_dir: /go/src/github.com/tonychill/ifitu/apis/protos
     volumes:
       - ../:/go/src/github.com/tonychill/ifitu
-      - ${GOMODCACHE:-~/go/pkg/mod}:/go/pkg/mod
+      - ${GOMODCACHE:-~/go/pkg/mod}:/go/pkg/mod 

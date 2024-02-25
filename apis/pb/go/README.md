@@ -3,151 +3,137 @@
 
 ## Table of Contents
 
-- [coordinator.proto](#coordinator-proto)
-    - [GetCurationRequest](#coordinator_service-GetCurationRequest)
+- [coordinator.proto](#coordinator.proto)
+    - [GetCurationRequest](#coordinator_service.GetCurationRequest)
   
-    - [CoordinatorService](#coordinator_service-CoordinatorService)
+    - [CoordinatorService](#coordinator_service.CoordinatorService)
   
-- [entry_point.proto](#entry_point-proto)
-    - [EntryPoint](#entry_point-EntryPoint)
+- [entry_point.proto](#entry_point.proto)
+    - [EntryPoint](#entry_point.EntryPoint)
   
-- [finance.proto](#finance-proto)
-    - [Bill](#finance-Bill)
-    - [ExperienceTuple](#finance-ExperienceTuple)
-    - [Finance](#finance-Finance)
-    - [Invoice](#finance-Invoice)
-    - [LineItem](#finance-LineItem)
-    - [LineItem.AttributesEntry](#finance-LineItem-AttributesEntry)
-    - [Payment](#finance-Payment)
-    - [PaymentAuthorized](#finance-PaymentAuthorized)
-    - [PaymentCaptured](#finance-PaymentCaptured)
-    - [PaymentIntent](#finance-PaymentIntent)
-    - [PaymentMethod](#finance-PaymentMethod)
-    - [PaymentMethodCreated](#finance-PaymentMethodCreated)
-    - [PaymentRefunded](#finance-PaymentRefunded)
-    - [PaymentUpdated](#finance-PaymentUpdated)
-    - [Payroll](#finance-Payroll)
-    - [Statement](#finance-Statement)
-    - [Transaction](#finance-Transaction)
-    - [Transfer](#finance-Transfer)
+- [finance.proto](#finance.proto)
+    - [Bill](#finance.Bill)
+    - [ExperienceTuple](#finance.ExperienceTuple)
+    - [Finance](#finance.Finance)
+    - [Invoice](#finance.Invoice)
+    - [LineItem](#finance.LineItem)
+    - [LineItem.AttributesEntry](#finance.LineItem.AttributesEntry)
+    - [Payment](#finance.Payment)
+    - [PaymentAuthorized](#finance.PaymentAuthorized)
+    - [PaymentCaptured](#finance.PaymentCaptured)
+    - [PaymentIntent](#finance.PaymentIntent)
+    - [PaymentMethod](#finance.PaymentMethod)
+    - [PaymentMethodCreated](#finance.PaymentMethodCreated)
+    - [PaymentRefunded](#finance.PaymentRefunded)
+    - [PaymentUpdated](#finance.PaymentUpdated)
+    - [Payroll](#finance.Payroll)
+    - [Statement](#finance.Statement)
+    - [Transaction](#finance.Transaction)
+    - [Transfer](#finance.Transfer)
   
-    - [PaymentFailureCode](#finance-PaymentFailureCode)
-    - [PaymentMethodType](#finance-PaymentMethodType)
-    - [PaymentStatus](#finance-PaymentStatus)
+    - [PaymentFailureCode](#finance.PaymentFailureCode)
+    - [PaymentMethodType](#finance.PaymentMethodType)
+    - [PaymentStatus](#finance.PaymentStatus)
   
-- [finance_service.proto](#finance_service-proto)
-    - [AddPaymentMethodRequest](#finance_service-AddPaymentMethodRequest)
-    - [AddPaymentMethodResponse](#finance_service-AddPaymentMethodResponse)
-    - [CaptureFundsRequest](#finance_service-CaptureFundsRequest)
-    - [CaptureFundsResponse](#finance_service-CaptureFundsResponse)
-    - [CreateRatesRequest](#finance_service-CreateRatesRequest)
-    - [CreateRatesResponse](#finance_service-CreateRatesResponse)
-    - [GetPaymentMethodsRequest](#finance_service-GetPaymentMethodsRequest)
-    - [GetPaymentMethodsResponse](#finance_service-GetPaymentMethodsResponse)
-    - [GetPaymentsRequest](#finance_service-GetPaymentsRequest)
-    - [GetPaymentsResponse](#finance_service-GetPaymentsResponse)
-    - [GetPayrollRequest](#finance_service-GetPayrollRequest)
-    - [GetPayrollResponse](#finance_service-GetPayrollResponse)
-    - [GetRatesRequest](#finance_service-GetRatesRequest)
-    - [GetRatesResponse](#finance_service-GetRatesResponse)
-    - [GetTransactionRequest](#finance_service-GetTransactionRequest)
-    - [GetTransactionResponse](#finance_service-GetTransactionResponse)
-    - [RemovePaymentMethodRequest](#finance_service-RemovePaymentMethodRequest)
-    - [RemovePaymentMethodResponse](#finance_service-RemovePaymentMethodResponse)
-    - [SaveAuthorizationRequest](#finance_service-SaveAuthorizationRequest)
-    - [SaveAuthorizationResponse](#finance_service-SaveAuthorizationResponse)
-    - [StartCheckoutRequest](#finance_service-StartCheckoutRequest)
-    - [StartCheckoutResponse](#finance_service-StartCheckoutResponse)
+- [finance_service.proto](#finance_service.proto)
+    - [AddPaymentMethodRequest](#finance_service.AddPaymentMethodRequest)
+    - [AddPaymentMethodResponse](#finance_service.AddPaymentMethodResponse)
+    - [CaptureFundsRequest](#finance_service.CaptureFundsRequest)
+    - [CaptureFundsResponse](#finance_service.CaptureFundsResponse)
+    - [CreateRatesRequest](#finance_service.CreateRatesRequest)
+    - [CreateRatesResponse](#finance_service.CreateRatesResponse)
+    - [GetPaymentMethodsRequest](#finance_service.GetPaymentMethodsRequest)
+    - [GetPaymentMethodsResponse](#finance_service.GetPaymentMethodsResponse)
+    - [GetPaymentsRequest](#finance_service.GetPaymentsRequest)
+    - [GetPaymentsResponse](#finance_service.GetPaymentsResponse)
+    - [GetPayrollRequest](#finance_service.GetPayrollRequest)
+    - [GetPayrollResponse](#finance_service.GetPayrollResponse)
+    - [GetRatesRequest](#finance_service.GetRatesRequest)
+    - [GetRatesResponse](#finance_service.GetRatesResponse)
+    - [GetTransactionRequest](#finance_service.GetTransactionRequest)
+    - [GetTransactionResponse](#finance_service.GetTransactionResponse)
+    - [RemovePaymentMethodRequest](#finance_service.RemovePaymentMethodRequest)
+    - [RemovePaymentMethodResponse](#finance_service.RemovePaymentMethodResponse)
+    - [SaveAuthorizationRequest](#finance_service.SaveAuthorizationRequest)
+    - [SaveAuthorizationResponse](#finance_service.SaveAuthorizationResponse)
+    - [StartCheckoutRequest](#finance_service.StartCheckoutRequest)
+    - [StartCheckoutResponse](#finance_service.StartCheckoutResponse)
   
-    - [FinanceService](#finance_service-FinanceService)
+    - [FinanceService](#finance_service.FinanceService)
   
-- [global.proto](#global-proto)
-    - [Address](#global-Address)
-    - [Amenity](#global-Amenity)
-    - [Calendar](#global-Calendar)
-    - [Caveat](#global-Caveat)
-    - [Comment](#global-Comment)
-    - [Confirmation](#global-Confirmation)
-    - [Content](#global-Content)
-    - [Content.MetadataEntry](#global-Content-MetadataEntry)
-    - [ContentPacket](#global-ContentPacket)
-    - [Customer](#global-Customer)
-    - [Entity](#global-Entity)
-    - [Error](#global-Error)
-    - [Event](#global-Event)
-    - [Experience](#global-Experience)
-    - [ExperienceConfirmationsRequest](#global-ExperienceConfirmationsRequest)
-    - [ExperienceConfirmationsResponse](#global-ExperienceConfirmationsResponse)
-    - [Feature](#global-Feature)
-    - [Geo](#global-Geo)
-    - [Impression](#global-Impression)
-    - [Location](#global-Location)
-    - [Note](#global-Note)
-    - [Option](#global-Option)
-    - [Permission](#global-Permission)
-    - [Query](#global-Query)
-    - [Rate](#global-Rate)
-    - [Rate.MetadataEntry](#global-Rate-MetadataEntry)
-    - [Rating](#global-Rating)
-    - [Rule](#global-Rule)
-    - [Size](#global-Size)
-    - [Source](#global-Source)
-    - [Space](#global-Space)
-    - [Space.AttributesEntry](#global-Space-AttributesEntry)
-    - [TaxRate](#global-TaxRate)
-    - [TelematicUpdate](#global-TelematicUpdate)
-    - [TelematicUpdate.MetadataEntry](#global-TelematicUpdate-MetadataEntry)
-    - [Term](#global-Term)
+- [global.proto](#global.proto)
+    - [Address](#global.Address)
+    - [Amenity](#global.Amenity)
+    - [Calendar](#global.Calendar)
+    - [Caveat](#global.Caveat)
+    - [Comment](#global.Comment)
+    - [Confirmation](#global.Confirmation)
+    - [Content](#global.Content)
+    - [Content.MetadataEntry](#global.Content.MetadataEntry)
+    - [ContentPacket](#global.ContentPacket)
+    - [Customer](#global.Customer)
+    - [Entity](#global.Entity)
+    - [Error](#global.Error)
+    - [Event](#global.Event)
+    - [Experience](#global.Experience)
+    - [ExperienceConfirmationsRequest](#global.ExperienceConfirmationsRequest)
+    - [ExperienceConfirmationsResponse](#global.ExperienceConfirmationsResponse)
+    - [Feature](#global.Feature)
+    - [Geo](#global.Geo)
+    - [Impression](#global.Impression)
+    - [Location](#global.Location)
+    - [Note](#global.Note)
+    - [Option](#global.Option)
+    - [Permission](#global.Permission)
+    - [Query](#global.Query)
+    - [Rate](#global.Rate)
+    - [Rate.MetadataEntry](#global.Rate.MetadataEntry)
+    - [Rating](#global.Rating)
+    - [Rule](#global.Rule)
+    - [Size](#global.Size)
+    - [Source](#global.Source)
+    - [Space](#global.Space)
+    - [Space.AttributesEntry](#global.Space.AttributesEntry)
+    - [TaxRate](#global.TaxRate)
+    - [TelematicUpdate](#global.TelematicUpdate)
+    - [TelematicUpdate.MetadataEntry](#global.TelematicUpdate.MetadataEntry)
+    - [Term](#global.Term)
   
-    - [ConfirmationStatus](#global-ConfirmationStatus)
-    - [ContentType](#global-ContentType)
-    - [CreatorType](#global-CreatorType)
-    - [Currency](#global-Currency)
-    - [Day](#global-Day)
-    - [EntityType](#global-EntityType)
-    - [ExperienceType](#global-ExperienceType)
-    - [LocationType](#global-LocationType)
-    - [Order](#global-Order)
-    - [RateFrequency](#global-RateFrequency)
-    - [RateType](#global-RateType)
-    - [ResourceType](#global-ResourceType)
-    - [SpaceSubType](#global-SpaceSubType)
-    - [SpaceType](#global-SpaceType)
+    - [ConfirmationStatus](#global.ConfirmationStatus)
+    - [ContentType](#global.ContentType)
+    - [CreatorType](#global.CreatorType)
+    - [Currency](#global.Currency)
+    - [Day](#global.Day)
+    - [EntityType](#global.EntityType)
+    - [ExperienceType](#global.ExperienceType)
+    - [LocationType](#global.LocationType)
+    - [Order](#global.Order)
+    - [RateFrequency](#global.RateFrequency)
+    - [RateType](#global.RateType)
+    - [ResourceType](#global.ResourceType)
+    - [SpaceSubType](#global.SpaceSubType)
+    - [SpaceType](#global.SpaceType)
   
-- [health_check.proto](#health_check-proto)
-    - [HealthCheckRequest](#health_check-HealthCheckRequest)
-    - [HealthCheckResponse](#health_check-HealthCheckResponse)
+- [health_check.proto](#health_check.proto)
+    - [HealthCheckRequest](#health_check.HealthCheckRequest)
+    - [HealthCheckResponse](#health_check.HealthCheckResponse)
   
-    - [HealthCheckResponse.ServingStatus](#health_check-HealthCheckResponse-ServingStatus)
+    - [HealthCheckResponse.ServingStatus](#health_check.HealthCheckResponse.ServingStatus)
   
-    - [Health](#health_check-Health)
-  
-- [tasks.proto](#tasks-proto)
-    - [CreateTaskRequest](#tasks-CreateTaskRequest)
-    - [CreateTaskResponse](#tasks-CreateTaskResponse)
-    - [DeleteTaskRequest](#tasks-DeleteTaskRequest)
-    - [DeleteTaskResponse](#tasks-DeleteTaskResponse)
-    - [GetTaskRequest](#tasks-GetTaskRequest)
-    - [GetTaskResponse](#tasks-GetTaskResponse)
-    - [ListTasksRequest](#tasks-ListTasksRequest)
-    - [ListTasksResponse](#tasks-ListTasksResponse)
-    - [UpdateTaskRequest](#tasks-UpdateTaskRequest)
-    - [UpdateTaskResponse](#tasks-UpdateTaskResponse)
-  
-    - [TaskService](#tasks-TaskService)
+    - [Health](#health_check.Health)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="coordinator-proto"></a>
+<a name="coordinator.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## coordinator.proto
 
 
 
-<a name="coordinator_service-GetCurationRequest"></a>
+<a name="coordinator_service.GetCurationRequest"></a>
 
 ### GetCurationRequest
 
@@ -155,7 +141,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| query | [global.Query](#global-Query) |  |  |
+| query | [global.Query](#global.Query) |  |  |
 | page_token | [string](#string) |  | st joun home with 4 beds for a group of 8 ranging between 200 - 500 for the week. |
 | page | [int32](#int32) |  |  |
 | page_size | [int32](#int32) |  | Example query: &#34;rate_range&#34;: &#34;[500-1000]&#34;, &#34;rate_interval&#34;: &#34;hourly|daily|weekly|monthly&#34;, &#34;rate_currency&#34;: &#34;USD|EUR|GBP|BTC|ETH&#34;, &#34;location_names&#34;: &#34;st. john, st. thomas, jamaica, ...&#34;, &#34;location_geos&#34;: &#34;[18.12345,64.35465],[18.12345,64.35465],...&#34;, &#34;location_raduis&#34;: &#34;50mi,25mi...&#34;, |
@@ -171,7 +157,7 @@
  
 
 
-<a name="coordinator_service-CoordinatorService"></a>
+<a name="coordinator_service.CoordinatorService"></a>
 
 ### CoordinatorService
 
@@ -183,7 +169,7 @@
 
 
 
-<a name="entry_point-proto"></a>
+<a name="entry_point.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## entry_point.proto
@@ -196,7 +182,7 @@
  
 
 
-<a name="entry_point-EntryPoint"></a>
+<a name="entry_point.EntryPoint"></a>
 
 ### EntryPoint
 
@@ -208,14 +194,14 @@
 
 
 
-<a name="finance-proto"></a>
+<a name="finance.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## finance.proto
 
 
 
-<a name="finance-Bill"></a>
+<a name="finance.Bill"></a>
 
 ### Bill
 
@@ -225,14 +211,14 @@
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | total | [int32](#int32) |  |  |
-| line_items | [LineItem](#finance-LineItem) | repeated |  |
+| line_items | [LineItem](#finance.LineItem) | repeated |  |
 
 
 
 
 
 
-<a name="finance-ExperienceTuple"></a>
+<a name="finance.ExperienceTuple"></a>
 
 ### ExperienceTuple
 
@@ -251,7 +237,7 @@
 
 
 
-<a name="finance-Finance"></a>
+<a name="finance.Finance"></a>
 
 ### Finance
 
@@ -266,7 +252,7 @@
 
 
 
-<a name="finance-Invoice"></a>
+<a name="finance.Invoice"></a>
 
 ### Invoice
 
@@ -276,14 +262,14 @@
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | total | [int32](#int32) |  |  |
-| line_items | [LineItem](#finance-LineItem) | repeated |  |
+| line_items | [LineItem](#finance.LineItem) | repeated |  |
 
 
 
 
 
 
-<a name="finance-LineItem"></a>
+<a name="finance.LineItem"></a>
 
 ### LineItem
 
@@ -299,18 +285,18 @@
 | name | [string](#string) |  |  |
 | description | [string](#string) |  |  |
 | amount | [int32](#int32) |  |  |
-| currency | [global.Currency](#global-Currency) |  |  |
-| item_rate | [global.Rate](#global-Rate) |  | TODO: maybe this should just be an item as it already has a type of tax or should/could it be a list of rates? |
-| tax_rate | [global.Rate](#global-Rate) |  |  |
+| currency | [global.Currency](#global.Currency) |  |  |
+| item_rate | [global.Rate](#global.Rate) |  | TODO: maybe this should just be an item as it already has a type of tax or should/could it be a list of rates? |
+| tax_rate | [global.Rate](#global.Rate) |  |  |
 | reference | [string](#string) |  | FIXME: ?? reference to what? |
-| attributes | [LineItem.AttributesEntry](#finance-LineItem-AttributesEntry) | repeated |  |
+| attributes | [LineItem.AttributesEntry](#finance.LineItem.AttributesEntry) | repeated |  |
 
 
 
 
 
 
-<a name="finance-LineItem-AttributesEntry"></a>
+<a name="finance.LineItem.AttributesEntry"></a>
 
 ### LineItem.AttributesEntry
 
@@ -326,7 +312,7 @@
 
 
 
-<a name="finance-Payment"></a>
+<a name="finance.Payment"></a>
 
 ### Payment
 
@@ -345,17 +331,17 @@
 | auth_date | [int64](#int64) |  |  |
 | capture_date | [int64](#int64) |  |  |
 | refund_date | [int64](#int64) |  |  |
-| status | [PaymentStatus](#finance-PaymentStatus) |  |  |
-| failure_code | [PaymentFailureCode](#finance-PaymentFailureCode) |  |  |
+| status | [PaymentStatus](#finance.PaymentStatus) |  |  |
+| failure_code | [PaymentFailureCode](#finance.PaymentFailureCode) |  |  |
 | failure_message | [string](#string) |  |  |
-| payment_intent | [PaymentIntent](#finance-PaymentIntent) |  |  |
+| payment_intent | [PaymentIntent](#finance.PaymentIntent) |  |  |
 
 
 
 
 
 
-<a name="finance-PaymentAuthorized"></a>
+<a name="finance.PaymentAuthorized"></a>
 
 ### PaymentAuthorized
 event source events
@@ -363,14 +349,14 @@ event source events
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| payment | [Payment](#finance-Payment) |  |  |
+| payment | [Payment](#finance.Payment) |  |  |
 
 
 
 
 
 
-<a name="finance-PaymentCaptured"></a>
+<a name="finance.PaymentCaptured"></a>
 
 ### PaymentCaptured
 
@@ -378,14 +364,14 @@ event source events
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| payment | [Payment](#finance-Payment) |  |  |
+| payment | [Payment](#finance.Payment) |  |  |
 
 
 
 
 
 
-<a name="finance-PaymentIntent"></a>
+<a name="finance.PaymentIntent"></a>
 
 ### PaymentIntent
 
@@ -403,7 +389,7 @@ event source events
 
 
 
-<a name="finance-PaymentMethod"></a>
+<a name="finance.PaymentMethod"></a>
 
 ### PaymentMethod
 
@@ -420,14 +406,14 @@ event source events
 | country | [string](#string) |  |  |
 | exp_month | [int32](#int32) |  |  |
 | exp_year | [int32](#int32) |  |  |
-| type | [PaymentMethodType](#finance-PaymentMethodType) |  |  |
+| type | [PaymentMethodType](#finance.PaymentMethodType) |  |  |
 
 
 
 
 
 
-<a name="finance-PaymentMethodCreated"></a>
+<a name="finance.PaymentMethodCreated"></a>
 
 ### PaymentMethodCreated
 
@@ -435,14 +421,14 @@ event source events
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| payment_method | [PaymentMethod](#finance-PaymentMethod) |  |  |
+| payment_method | [PaymentMethod](#finance.PaymentMethod) |  |  |
 
 
 
 
 
 
-<a name="finance-PaymentRefunded"></a>
+<a name="finance.PaymentRefunded"></a>
 
 ### PaymentRefunded
 
@@ -450,14 +436,14 @@ event source events
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| payment | [Payment](#finance-Payment) |  |  |
+| payment | [Payment](#finance.Payment) |  |  |
 
 
 
 
 
 
-<a name="finance-PaymentUpdated"></a>
+<a name="finance.PaymentUpdated"></a>
 
 ### PaymentUpdated
 
@@ -465,14 +451,14 @@ event source events
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| payment | [Payment](#finance-Payment) |  |  |
+| payment | [Payment](#finance.Payment) |  |  |
 
 
 
 
 
 
-<a name="finance-Payroll"></a>
+<a name="finance.Payroll"></a>
 
 ### Payroll
 
@@ -487,7 +473,7 @@ event source events
 
 
 
-<a name="finance-Statement"></a>
+<a name="finance.Statement"></a>
 
 ### Statement
 
@@ -497,14 +483,14 @@ event source events
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | total | [int32](#int32) |  |  |
-| line_items | [LineItem](#finance-LineItem) | repeated |  |
+| line_items | [LineItem](#finance.LineItem) | repeated |  |
 
 
 
 
 
 
-<a name="finance-Transaction"></a>
+<a name="finance.Transaction"></a>
 
 ### Transaction
 
@@ -514,14 +500,14 @@ event source events
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | total | [int32](#int32) |  |  |
-| line_items | [LineItem](#finance-LineItem) | repeated |  |
+| line_items | [LineItem](#finance.LineItem) | repeated |  |
 
 
 
 
 
 
-<a name="finance-Transfer"></a>
+<a name="finance.Transfer"></a>
 
 ### Transfer
 
@@ -533,7 +519,7 @@ event source events
  
 
 
-<a name="finance-PaymentFailureCode"></a>
+<a name="finance.PaymentFailureCode"></a>
 
 ### PaymentFailureCode
 https://stripe.com/docs/error-codes
@@ -572,7 +558,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance-PaymentMethodType"></a>
+<a name="finance.PaymentMethodType"></a>
 
 ### PaymentMethodType
 
@@ -584,7 +570,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance-PaymentStatus"></a>
+<a name="finance.PaymentStatus"></a>
 
 ### PaymentStatus
 
@@ -607,14 +593,14 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance_service-proto"></a>
+<a name="finance_service.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## finance_service.proto
 
 
 
-<a name="finance_service-AddPaymentMethodRequest"></a>
+<a name="finance_service.AddPaymentMethodRequest"></a>
 
 ### AddPaymentMethodRequest
 
@@ -622,14 +608,14 @@ https://stripe.com/docs/error-codes
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| payment_method | [finance.PaymentMethod](#finance-PaymentMethod) |  |  |
+| payment_method | [finance.PaymentMethod](#finance.PaymentMethod) |  |  |
 
 
 
 
 
 
-<a name="finance_service-AddPaymentMethodResponse"></a>
+<a name="finance_service.AddPaymentMethodResponse"></a>
 
 ### AddPaymentMethodResponse
 
@@ -637,14 +623,14 @@ https://stripe.com/docs/error-codes
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| payment_method | [finance.PaymentMethod](#finance-PaymentMethod) |  |  |
+| payment_method | [finance.PaymentMethod](#finance.PaymentMethod) |  |  |
 
 
 
 
 
 
-<a name="finance_service-CaptureFundsRequest"></a>
+<a name="finance_service.CaptureFundsRequest"></a>
 
 ### CaptureFundsRequest
 
@@ -660,7 +646,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance_service-CaptureFundsResponse"></a>
+<a name="finance_service.CaptureFundsResponse"></a>
 
 ### CaptureFundsResponse
 
@@ -668,14 +654,14 @@ https://stripe.com/docs/error-codes
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| payment | [finance.Payment](#finance-Payment) |  |  |
+| payment | [finance.Payment](#finance.Payment) |  |  |
 
 
 
 
 
 
-<a name="finance_service-CreateRatesRequest"></a>
+<a name="finance_service.CreateRatesRequest"></a>
 
 ### CreateRatesRequest
 
@@ -683,14 +669,14 @@ https://stripe.com/docs/error-codes
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| rates | [global.Rate](#global-Rate) | repeated |  |
+| rates | [global.Rate](#global.Rate) | repeated |  |
 
 
 
 
 
 
-<a name="finance_service-CreateRatesResponse"></a>
+<a name="finance_service.CreateRatesResponse"></a>
 
 ### CreateRatesResponse
 
@@ -705,7 +691,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance_service-GetPaymentMethodsRequest"></a>
+<a name="finance_service.GetPaymentMethodsRequest"></a>
 
 ### GetPaymentMethodsRequest
 
@@ -713,14 +699,14 @@ https://stripe.com/docs/error-codes
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| query | [global.Query](#global-Query) |  |  |
+| query | [global.Query](#global.Query) |  |  |
 
 
 
 
 
 
-<a name="finance_service-GetPaymentMethodsResponse"></a>
+<a name="finance_service.GetPaymentMethodsResponse"></a>
 
 ### GetPaymentMethodsResponse
 
@@ -728,14 +714,14 @@ https://stripe.com/docs/error-codes
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| payment_methods | [finance.PaymentMethod](#finance-PaymentMethod) | repeated |  |
+| payment_methods | [finance.PaymentMethod](#finance.PaymentMethod) | repeated |  |
 
 
 
 
 
 
-<a name="finance_service-GetPaymentsRequest"></a>
+<a name="finance_service.GetPaymentsRequest"></a>
 
 ### GetPaymentsRequest
 
@@ -745,7 +731,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance_service-GetPaymentsResponse"></a>
+<a name="finance_service.GetPaymentsResponse"></a>
 
 ### GetPaymentsResponse
 
@@ -755,7 +741,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance_service-GetPayrollRequest"></a>
+<a name="finance_service.GetPayrollRequest"></a>
 
 ### GetPayrollRequest
 
@@ -765,7 +751,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance_service-GetPayrollResponse"></a>
+<a name="finance_service.GetPayrollResponse"></a>
 
 ### GetPayrollResponse
 
@@ -775,7 +761,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance_service-GetRatesRequest"></a>
+<a name="finance_service.GetRatesRequest"></a>
 
 ### GetRatesRequest
 
@@ -783,14 +769,14 @@ https://stripe.com/docs/error-codes
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| query | [global.Query](#global-Query) |  |  |
+| query | [global.Query](#global.Query) |  |  |
 
 
 
 
 
 
-<a name="finance_service-GetRatesResponse"></a>
+<a name="finance_service.GetRatesResponse"></a>
 
 ### GetRatesResponse
 
@@ -798,14 +784,14 @@ https://stripe.com/docs/error-codes
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| rates | [global.Rate](#global-Rate) | repeated |  |
+| rates | [global.Rate](#global.Rate) | repeated |  |
 
 
 
 
 
 
-<a name="finance_service-GetTransactionRequest"></a>
+<a name="finance_service.GetTransactionRequest"></a>
 
 ### GetTransactionRequest
 
@@ -814,14 +800,14 @@ https://stripe.com/docs/error-codes
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| query | [global.Query](#global-Query) |  |  |
+| query | [global.Query](#global.Query) |  |  |
 
 
 
 
 
 
-<a name="finance_service-GetTransactionResponse"></a>
+<a name="finance_service.GetTransactionResponse"></a>
 
 ### GetTransactionResponse
 
@@ -829,14 +815,14 @@ https://stripe.com/docs/error-codes
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| transactions | [finance.Transaction](#finance-Transaction) | repeated |  |
+| transactions | [finance.Transaction](#finance.Transaction) | repeated |  |
 
 
 
 
 
 
-<a name="finance_service-RemovePaymentMethodRequest"></a>
+<a name="finance_service.RemovePaymentMethodRequest"></a>
 
 ### RemovePaymentMethodRequest
 
@@ -852,7 +838,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance_service-RemovePaymentMethodResponse"></a>
+<a name="finance_service.RemovePaymentMethodResponse"></a>
 
 ### RemovePaymentMethodResponse
 
@@ -862,7 +848,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance_service-SaveAuthorizationRequest"></a>
+<a name="finance_service.SaveAuthorizationRequest"></a>
 
 ### SaveAuthorizationRequest
 
@@ -880,7 +866,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance_service-SaveAuthorizationResponse"></a>
+<a name="finance_service.SaveAuthorizationResponse"></a>
 
 ### SaveAuthorizationResponse
 
@@ -888,14 +874,14 @@ https://stripe.com/docs/error-codes
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| payment | [finance.Payment](#finance-Payment) |  |  |
+| payment | [finance.Payment](#finance.Payment) |  |  |
 
 
 
 
 
 
-<a name="finance_service-StartCheckoutRequest"></a>
+<a name="finance_service.StartCheckoutRequest"></a>
 
 ### StartCheckoutRequest
 
@@ -905,7 +891,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="finance_service-StartCheckoutResponse"></a>
+<a name="finance_service.StartCheckoutResponse"></a>
 
 ### StartCheckoutResponse
 
@@ -926,34 +912,34 @@ https://stripe.com/docs/error-codes
  
 
 
-<a name="finance_service-FinanceService"></a>
+<a name="finance_service.FinanceService"></a>
 
 ### FinanceService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| StartCheckout | [StartCheckoutRequest](#finance_service-StartCheckoutRequest) | [StartCheckoutResponse](#finance_service-StartCheckoutResponse) |  |
-| GetPayments | [GetPaymentsRequest](#finance_service-GetPaymentsRequest) | [GetPaymentsResponse](#finance_service-GetPaymentsResponse) |  |
-| AddPaymentMethod | [AddPaymentMethodRequest](#finance_service-AddPaymentMethodRequest) | [AddPaymentMethodResponse](#finance_service-AddPaymentMethodResponse) |  |
-| GetPaymentMethods | [GetPaymentMethodsRequest](#finance_service-GetPaymentMethodsRequest) | [GetPaymentMethodsResponse](#finance_service-GetPaymentMethodsResponse) |  |
-| RemovePaymentMethod | [RemovePaymentMethodRequest](#finance_service-RemovePaymentMethodRequest) | [RemovePaymentMethodResponse](#finance_service-RemovePaymentMethodResponse) |  |
-| SaveAuthorization | [SaveAuthorizationRequest](#finance_service-SaveAuthorizationRequest) | [SaveAuthorizationResponse](#finance_service-SaveAuthorizationResponse) |  |
-| CaptureFunds | [CaptureFundsRequest](#finance_service-CaptureFundsRequest) | [CaptureFundsResponse](#finance_service-CaptureFundsResponse) |  |
-| GetPayroll | [GetPayrollRequest](#finance_service-GetPayrollRequest) | [GetPayrollResponse](#finance_service-GetPayrollResponse) |  |
+| StartCheckout | [StartCheckoutRequest](#finance_service.StartCheckoutRequest) | [StartCheckoutResponse](#finance_service.StartCheckoutResponse) |  |
+| GetPayments | [GetPaymentsRequest](#finance_service.GetPaymentsRequest) | [GetPaymentsResponse](#finance_service.GetPaymentsResponse) |  |
+| AddPaymentMethod | [AddPaymentMethodRequest](#finance_service.AddPaymentMethodRequest) | [AddPaymentMethodResponse](#finance_service.AddPaymentMethodResponse) |  |
+| GetPaymentMethods | [GetPaymentMethodsRequest](#finance_service.GetPaymentMethodsRequest) | [GetPaymentMethodsResponse](#finance_service.GetPaymentMethodsResponse) |  |
+| RemovePaymentMethod | [RemovePaymentMethodRequest](#finance_service.RemovePaymentMethodRequest) | [RemovePaymentMethodResponse](#finance_service.RemovePaymentMethodResponse) |  |
+| SaveAuthorization | [SaveAuthorizationRequest](#finance_service.SaveAuthorizationRequest) | [SaveAuthorizationResponse](#finance_service.SaveAuthorizationResponse) |  |
+| CaptureFunds | [CaptureFundsRequest](#finance_service.CaptureFundsRequest) | [CaptureFundsResponse](#finance_service.CaptureFundsResponse) |  |
+| GetPayroll | [GetPayrollRequest](#finance_service.GetPayrollRequest) | [GetPayrollResponse](#finance_service.GetPayrollResponse) |  |
 
  
 
 
 
-<a name="global-proto"></a>
+<a name="global.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## global.proto
 
 
 
-<a name="global-Address"></a>
+<a name="global.Address"></a>
 
 ### Address
 
@@ -973,7 +959,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="global-Amenity"></a>
+<a name="global.Amenity"></a>
 
 ### Amenity
 
@@ -991,7 +977,7 @@ https://stripe.com/docs/error-codes
 
 
 
-<a name="global-Calendar"></a>
+<a name="global.Calendar"></a>
 
 ### Calendar
 A calendar is a collection of related events, as well as additional 
@@ -1010,15 +996,15 @@ created as well and tied to the reservation.
 | description | [string](#string) |  |  |
 | created_at | [int64](#int64) |  |  |
 | updated_at | [int64](#int64) |  |  |
-| rules | [Rule](#global-Rule) | repeated |  |
-| events | [Event](#global-Event) | repeated | owner_id repeated Guests owners = x; reservation_id rules repeated Event events Days/Slots repeated Guest viewers string time_zone string description |
+| rules | [Rule](#global.Rule) | repeated |  |
+| events | [Event](#global.Event) | repeated | owner_id repeated Guests owners = x; reservation_id rules repeated Event events Days/Slots repeated Guest viewers string time_zone string description |
 
 
 
 
 
 
-<a name="global-Caveat"></a>
+<a name="global.Caveat"></a>
 
 ### Caveat
 
@@ -1037,7 +1023,7 @@ created as well and tied to the reservation.
 
 
 
-<a name="global-Comment"></a>
+<a name="global.Comment"></a>
 
 ### Comment
 
@@ -1060,7 +1046,7 @@ created as well and tied to the reservation.
 
 
 
-<a name="global-Confirmation"></a>
+<a name="global.Confirmation"></a>
 
 ### Confirmation
 
@@ -1072,16 +1058,16 @@ created as well and tied to the reservation.
 | experience_total | [int64](#int64) |  |  |
 | share_of_total | [int64](#int64) |  |  |
 | payment_method_id | [string](#string) |  |  |
-| status | [ConfirmationStatus](#global-ConfirmationStatus) |  |  |
+| status | [ConfirmationStatus](#global.ConfirmationStatus) |  |  |
 | client_secret | [string](#string) |  |  |
-| currency | [Currency](#global-Currency) |  |  |
+| currency | [Currency](#global.Currency) |  |  |
 
 
 
 
 
 
-<a name="global-Content"></a>
+<a name="global.Content"></a>
 
 ### Content
 
@@ -1097,11 +1083,11 @@ created as well and tied to the reservation.
 | size | [int64](#int64) |  | in bytes |
 | data | [bytes](#bytes) |  |  |
 | creator_id | [string](#string) |  |  |
-| creator_type | [CreatorType](#global-CreatorType) |  |  |
+| creator_type | [CreatorType](#global.CreatorType) |  |  |
 | created_at | [int64](#int64) |  |  |
-| impressions | [Impression](#global-Impression) | repeated |  |
-| content_type | [ContentType](#global-ContentType) |  |  |
-| metadata | [Content.MetadataEntry](#global-Content-MetadataEntry) | repeated |  |
+| impressions | [Impression](#global.Impression) | repeated |  |
+| content_type | [ContentType](#global.ContentType) |  |  |
+| metadata | [Content.MetadataEntry](#global.Content.MetadataEntry) | repeated |  |
 | associations | [string](#string) | repeated | TODO: work on |
 
 
@@ -1109,7 +1095,7 @@ created as well and tied to the reservation.
 
 
 
-<a name="global-Content-MetadataEntry"></a>
+<a name="global.Content.MetadataEntry"></a>
 
 ### Content.MetadataEntry
 
@@ -1125,7 +1111,7 @@ created as well and tied to the reservation.
 
 
 
-<a name="global-ContentPacket"></a>
+<a name="global.ContentPacket"></a>
 
 ### ContentPacket
 TODO: do we need this?
@@ -1134,14 +1120,14 @@ TODO: do we need this?
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | current_packets_total | [int64](#int64) |  |  |
-| media | [Content](#global-Content) |  | int64 current_packets_sent = 1; |
+| media | [Content](#global.Content) |  | int64 current_packets_sent = 1; |
 
 
 
 
 
 
-<a name="global-Customer"></a>
+<a name="global.Customer"></a>
 
 ### Customer
 
@@ -1159,7 +1145,7 @@ TODO: do we need this?
 | created_at | [int64](#int64) |  |  |
 | updated_at | [int64](#int64) |  |  |
 | deleted_at | [int64](#int64) |  |  |
-| address | [Address](#global-Address) |  | guests can update their addresses |
+| address | [Address](#global.Address) |  | guests can update their addresses |
 | profile_image_url | [string](#string) |  |  |
 | role_ids | [string](#string) | repeated | add alergies as top line item repeated Preference preferences = 13; Note above the persona property. Persona persona = 14; // Part fo the truth engine string gender = 15; |
 | policy_ids | [string](#string) | repeated |  |
@@ -1170,7 +1156,7 @@ TODO: do we need this?
 
 
 
-<a name="global-Entity"></a>
+<a name="global.Entity"></a>
 
 ### Entity
 
@@ -1182,18 +1168,18 @@ TODO: do we need this?
 | name | [string](#string) |  |  |
 | description | [string](#string) |  |  |
 | required | [bool](#bool) |  |  |
-| type | [EntityType](#global-EntityType) |  | Always required |
+| type | [EntityType](#global.EntityType) |  | Always required |
 | role | [string](#string) |  |  |
 | start_time | [int64](#int64) |  | the epoch time in seconds when the rule should start |
 | end_time | [int64](#int64) |  | the epoch time in seconds when the rule should end |
-| permissions | [Permission](#global-Permission) | repeated | relation |
+| permissions | [Permission](#global.Permission) | repeated | relation |
 
 
 
 
 
 
-<a name="global-Error"></a>
+<a name="global.Error"></a>
 
 ### Error
 
@@ -1210,7 +1196,7 @@ TODO: do we need this?
 
 
 
-<a name="global-Event"></a>
+<a name="global.Event"></a>
 
 ### Event
 An event is an object associated with a specific date or time range.
@@ -1219,8 +1205,8 @@ An event is an object associated with a specific date or time range.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| primary_calendar | [Calendar](#global-Calendar) |  | The calendar the governs the event. |
-| associated_calendars | [Calendar](#global-Calendar) | repeated | Calendars where the event would show i.e. calendars of attending guests.
+| primary_calendar | [Calendar](#global.Calendar) |  | The calendar the governs the event. |
+| associated_calendars | [Calendar](#global.Calendar) | repeated | Calendars where the event would show i.e. calendars of attending guests.
 
 start_date end_date .... string description Status status repeated Reminder reminders repeated Attatchment attachments int64 start_time = x; int64 end_time = x; Location location = x; Guest organizer = x; repeated Guest guests = x; |
 
@@ -1229,7 +1215,7 @@ start_date end_date .... string description Status status repeated Reminder remi
 
 
 
-<a name="global-Experience"></a>
+<a name="global.Experience"></a>
 
 ### Experience
 
@@ -1241,27 +1227,27 @@ start_date end_date .... string description Status status repeated Reminder remi
 | partner_id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| type | [ExperienceType](#global-ExperienceType) |  |  |
-| media | [Content](#global-Content) | repeated |  |
+| type | [ExperienceType](#global.ExperienceType) |  |  |
+| media | [Content](#global.Content) | repeated |  |
 | start_date | [int64](#int64) |  |  |
 | end_date | [int64](#int64) |  |  |
 | tags | [string](#string) | repeated |  |
-| rules | [Rule](#global-Rule) | repeated |  |
-| rates | [Rate](#global-Rate) | repeated |  |
-| features | [Feature](#global-Feature) | repeated |  |
-| spaces | [Space](#global-Space) | repeated |  |
-| impressions | [Impression](#global-Impression) | repeated |  |
-| comments | [Comment](#global-Comment) | repeated |  |
-| locations | [Location](#global-Location) | repeated |  |
-| calendars | [Calendar](#global-Calendar) | repeated |  |
-| customers | [Customer](#global-Customer) | repeated |  |
+| rules | [Rule](#global.Rule) | repeated |  |
+| rates | [Rate](#global.Rate) | repeated |  |
+| features | [Feature](#global.Feature) | repeated |  |
+| spaces | [Space](#global.Space) | repeated |  |
+| impressions | [Impression](#global.Impression) | repeated |  |
+| comments | [Comment](#global.Comment) | repeated |  |
+| locations | [Location](#global.Location) | repeated |  |
+| calendars | [Calendar](#global.Calendar) | repeated |  |
+| customers | [Customer](#global.Customer) | repeated |  |
 
 
 
 
 
 
-<a name="global-ExperienceConfirmationsRequest"></a>
+<a name="global.ExperienceConfirmationsRequest"></a>
 
 ### ExperienceConfirmationsRequest
 
@@ -1270,14 +1256,14 @@ start_date end_date .... string description Status status repeated Reminder remi
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | journey_id | [string](#string) |  |  |
-| confirmations | [Confirmation](#global-Confirmation) | repeated |  |
+| confirmations | [Confirmation](#global.Confirmation) | repeated |  |
 
 
 
 
 
 
-<a name="global-ExperienceConfirmationsResponse"></a>
+<a name="global.ExperienceConfirmationsResponse"></a>
 
 ### ExperienceConfirmationsResponse
 
@@ -1286,14 +1272,14 @@ start_date end_date .... string description Status status repeated Reminder remi
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | journey_id | [string](#string) |  |  |
-| confirmations | [Confirmation](#global-Confirmation) | repeated |  |
+| confirmations | [Confirmation](#global.Confirmation) | repeated |  |
 
 
 
 
 
 
-<a name="global-Feature"></a>
+<a name="global.Feature"></a>
 
 ### Feature
 
@@ -1314,7 +1300,7 @@ start_date end_date .... string description Status status repeated Reminder remi
 
 
 
-<a name="global-Geo"></a>
+<a name="global.Geo"></a>
 
 ### Geo
 
@@ -1334,7 +1320,7 @@ start_date end_date .... string description Status status repeated Reminder remi
 
 
 
-<a name="global-Impression"></a>
+<a name="global.Impression"></a>
 
 ### Impression
 TODO: look in to analytics tracking
@@ -1344,14 +1330,14 @@ TODO: look in to analytics tracking
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | duration | [int64](#int64) |  |  |
-| source | [Source](#global-Source) |  | TODO: or are guests the only sources for impressions? |
+| source | [Source](#global.Source) |  | TODO: or are guests the only sources for impressions? |
 
 
 
 
 
 
-<a name="global-Location"></a>
+<a name="global.Location"></a>
 
 ### Location
 
@@ -1362,16 +1348,16 @@ TODO: look in to analytics tracking
 | id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| address | [Address](#global-Address) |  |  |
-| geo | [Geo](#global-Geo) |  |  |
-| type | [LocationType](#global-LocationType) |  | TODO: add prev &amp;&amp; next bearfing?? |
+| address | [Address](#global.Address) |  |  |
+| geo | [Geo](#global.Geo) |  |  |
+| type | [LocationType](#global.LocationType) |  | TODO: add prev &amp;&amp; next bearfing?? |
 
 
 
 
 
 
-<a name="global-Note"></a>
+<a name="global.Note"></a>
 
 ### Note
 
@@ -1393,7 +1379,7 @@ TODO: look in to analytics tracking
 
 
 
-<a name="global-Option"></a>
+<a name="global.Option"></a>
 
 ### Option
 boat entity and captain entity
@@ -1404,14 +1390,14 @@ boat entity and captain entity
 | name | [string](#string) |  |  |
 | description | [string](#string) |  |  |
 | required | [bool](#bool) |  |  |
-| entity | [Entity](#global-Entity) |  |  |
+| entity | [Entity](#global.Entity) |  |  |
 
 
 
 
 
 
-<a name="global-Permission"></a>
+<a name="global.Permission"></a>
 
 ### Permission
 
@@ -1431,7 +1417,7 @@ boat entity and captain entity
 
 
 
-<a name="global-Query"></a>
+<a name="global.Query"></a>
 
 ### Query
 Meant to be super flexible to allow for any type of query
@@ -1440,17 +1426,17 @@ still with some level of static typing.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| terms | [Term](#global-Term) | repeated |  |
+| terms | [Term](#global.Term) | repeated |  |
 | page | [int32](#int32) |  |  |
 | page_size | [int32](#int32) |  |  |
-| order | [Order](#global-Order) |  |  |
+| order | [Order](#global.Order) |  |  |
 
 
 
 
 
 
-<a name="global-Rate"></a>
+<a name="global.Rate"></a>
 
 ### Rate
 
@@ -1463,13 +1449,13 @@ still with some level of static typing.
 | name | [string](#string) |  |  |
 | description | [string](#string) |  |  |
 | experiences | [string](#string) | repeated | type:id |
-| rate_type | [RateType](#global-RateType) |  |  |
+| rate_type | [RateType](#global.RateType) |  |  |
 | start_date | [int64](#int64) |  |  |
 | end_date | [int64](#int64) |  |  |
 | amount | [int64](#int64) |  | allways in cents |
-| currency | [Currency](#global-Currency) |  |  |
-| frequency | [RateFrequency](#global-RateFrequency) |  | TODO: add number of guests, number of hours, etc. |
-| metadata | [Rate.MetadataEntry](#global-Rate-MetadataEntry) | repeated |  |
+| currency | [Currency](#global.Currency) |  |  |
+| frequency | [RateFrequency](#global.RateFrequency) |  | TODO: add number of guests, number of hours, etc. |
+| metadata | [Rate.MetadataEntry](#global.Rate.MetadataEntry) | repeated |  |
 | created_at | [int64](#int64) |  |  |
 | updated_at | [int64](#int64) |  |  |
 
@@ -1478,7 +1464,7 @@ still with some level of static typing.
 
 
 
-<a name="global-Rate-MetadataEntry"></a>
+<a name="global.Rate.MetadataEntry"></a>
 
 ### Rate.MetadataEntry
 
@@ -1494,7 +1480,7 @@ still with some level of static typing.
 
 
 
-<a name="global-Rating"></a>
+<a name="global.Rating"></a>
 
 ### Rating
 
@@ -1518,7 +1504,7 @@ still with some level of static typing.
 
 
 
-<a name="global-Rule"></a>
+<a name="global.Rule"></a>
 
 ### Rule
 
@@ -1531,15 +1517,15 @@ still with some level of static typing.
 | description | [string](#string) |  | describes what the rule is for |
 | start_time | [int64](#int64) |  | always in milliseconds |
 | end_time | [int64](#int64) |  | -1 means never ends |
-| principal | [Entity](#global-Entity) |  | applied to |
-| options | [Option](#global-Option) | repeated | type?? |
+| principal | [Entity](#global.Entity) |  | applied to |
+| options | [Option](#global.Option) | repeated | type?? |
 
 
 
 
 
 
-<a name="global-Size"></a>
+<a name="global.Size"></a>
 
 ### Size
 
@@ -1557,7 +1543,7 @@ still with some level of static typing.
 
 
 
-<a name="global-Source"></a>
+<a name="global.Source"></a>
 
 ### Source
 
@@ -1572,7 +1558,7 @@ still with some level of static typing.
 
 
 
-<a name="global-Space"></a>
+<a name="global.Space"></a>
 
 ### Space
 
@@ -1583,24 +1569,24 @@ still with some level of static typing.
 | id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| type | [SpaceType](#global-SpaceType) |  |  |
-| sub_type | [SpaceSubType](#global-SpaceSubType) |  |  |
+| type | [SpaceType](#global.SpaceType) |  |  |
+| sub_type | [SpaceSubType](#global.SpaceSubType) |  |  |
 | guest_capacity | [int32](#int32) |  |  |
-| size | [Size](#global-Size) |  |  |
+| size | [Size](#global.Size) |  |  |
 | level | [int64](#int64) |  |  |
-| media | [Content](#global-Content) | repeated |  |
-| amenities | [Amenity](#global-Amenity) | repeated |  |
-| spaces | [Space](#global-Space) | repeated | Some spaces have inner inner spaces such as a master bedroom having a bathroom.
+| media | [Content](#global.Content) | repeated |  |
+| amenities | [Amenity](#global.Amenity) | repeated |  |
+| spaces | [Space](#global.Space) | repeated | Some spaces have inner inner spaces such as a master bedroom having a bathroom.
 
 * string building_id = 4; string floor_id = 5; int32 floor_level = 6; |
-| attributes | [Space.AttributesEntry](#global-Space-AttributesEntry) | repeated | data is used to store the specific data for a space type. |
+| attributes | [Space.AttributesEntry](#global.Space.AttributesEntry) | repeated | data is used to store the specific data for a space type. |
 
 
 
 
 
 
-<a name="global-Space-AttributesEntry"></a>
+<a name="global.Space.AttributesEntry"></a>
 
 ### Space.AttributesEntry
 
@@ -1616,7 +1602,7 @@ still with some level of static typing.
 
 
 
-<a name="global-TaxRate"></a>
+<a name="global.TaxRate"></a>
 
 ### TaxRate
 
@@ -1631,7 +1617,7 @@ still with some level of static typing.
 
 
 
-<a name="global-TelematicUpdate"></a>
+<a name="global.TelematicUpdate"></a>
 
 ### TelematicUpdate
 
@@ -1643,17 +1629,17 @@ still with some level of static typing.
 | type | [string](#string) |  |  |
 | description | [string](#string) |  |  |
 | timestamp | [int64](#int64) |  |  |
-| location | [Location](#global-Location) |  |  |
+| location | [Location](#global.Location) |  |  |
 | prev_update_id | [string](#string) |  |  |
 | next_update_id | [string](#string) |  |  |
-| metadata | [TelematicUpdate.MetadataEntry](#global-TelematicUpdate-MetadataEntry) | repeated |  |
+| metadata | [TelematicUpdate.MetadataEntry](#global.TelematicUpdate.MetadataEntry) | repeated |  |
 
 
 
 
 
 
-<a name="global-TelematicUpdate-MetadataEntry"></a>
+<a name="global.TelematicUpdate.MetadataEntry"></a>
 
 ### TelematicUpdate.MetadataEntry
 
@@ -1669,7 +1655,7 @@ still with some level of static typing.
 
 
 
-<a name="global-Term"></a>
+<a name="global.Term"></a>
 
 ### Term
 
@@ -1687,7 +1673,7 @@ still with some level of static typing.
  
 
 
-<a name="global-ConfirmationStatus"></a>
+<a name="global.ConfirmationStatus"></a>
 
 ### ConfirmationStatus
 
@@ -1702,7 +1688,7 @@ still with some level of static typing.
 
 
 
-<a name="global-ContentType"></a>
+<a name="global.ContentType"></a>
 
 ### ContentType
 
@@ -1717,7 +1703,7 @@ still with some level of static typing.
 
 
 
-<a name="global-CreatorType"></a>
+<a name="global.CreatorType"></a>
 
 ### CreatorType
 TODO: update to EntityType
@@ -1731,7 +1717,7 @@ TODO: update to EntityType
 
 
 
-<a name="global-Currency"></a>
+<a name="global.Currency"></a>
 
 ### Currency
 
@@ -1745,7 +1731,7 @@ TODO: update to EntityType
 
 
 
-<a name="global-Day"></a>
+<a name="global.Day"></a>
 
 ### Day
 
@@ -1763,7 +1749,7 @@ TODO: update to EntityType
 
 
 
-<a name="global-EntityType"></a>
+<a name="global.EntityType"></a>
 
 ### EntityType
 
@@ -1783,7 +1769,7 @@ TODO: update to EntityType
 
 
 
-<a name="global-ExperienceType"></a>
+<a name="global.ExperienceType"></a>
 
 ### ExperienceType
 
@@ -1802,7 +1788,7 @@ TODO: update to EntityType
 
 
 
-<a name="global-LocationType"></a>
+<a name="global.LocationType"></a>
 
 ### LocationType
 
@@ -1820,7 +1806,7 @@ TODO: update to EntityType
 
 
 
-<a name="global-Order"></a>
+<a name="global.Order"></a>
 
 ### Order
 
@@ -1833,7 +1819,7 @@ TODO: update to EntityType
 
 
 
-<a name="global-RateFrequency"></a>
+<a name="global.RateFrequency"></a>
 
 ### RateFrequency
 
@@ -1853,7 +1839,7 @@ TODO: update to EntityType
 
 
 
-<a name="global-RateType"></a>
+<a name="global.RateType"></a>
 
 ### RateType
 
@@ -1872,7 +1858,7 @@ TODO: update to EntityType
 
 
 
-<a name="global-ResourceType"></a>
+<a name="global.ResourceType"></a>
 
 ### ResourceType
 
@@ -1890,7 +1876,7 @@ TODO: update to EntityType
 
 
 
-<a name="global-SpaceSubType"></a>
+<a name="global.SpaceSubType"></a>
 
 ### SpaceSubType
 
@@ -1909,7 +1895,7 @@ TODO: update to EntityType
 
 
 
-<a name="global-SpaceType"></a>
+<a name="global.SpaceType"></a>
 
 ### SpaceType
 
@@ -1936,14 +1922,14 @@ TODO: update to EntityType
 
 
 
-<a name="health_check-proto"></a>
+<a name="health_check.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## health_check.proto
 
 
 
-<a name="health_check-HealthCheckRequest"></a>
+<a name="health_check.HealthCheckRequest"></a>
 
 ### HealthCheckRequest
 
@@ -1958,7 +1944,7 @@ TODO: update to EntityType
 
 
 
-<a name="health_check-HealthCheckResponse"></a>
+<a name="health_check.HealthCheckResponse"></a>
 
 ### HealthCheckResponse
 
@@ -1966,7 +1952,7 @@ TODO: update to EntityType
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| status | [HealthCheckResponse.ServingStatus](#health_check-HealthCheckResponse-ServingStatus) |  |  |
+| status | [HealthCheckResponse.ServingStatus](#health_check.HealthCheckResponse.ServingStatus) |  |  |
 
 
 
@@ -1975,7 +1961,7 @@ TODO: update to EntityType
  
 
 
-<a name="health_check-HealthCheckResponse-ServingStatus"></a>
+<a name="health_check.HealthCheckResponse.ServingStatus"></a>
 
 ### HealthCheckResponse.ServingStatus
 
@@ -1993,155 +1979,15 @@ TODO: update to EntityType
  
 
 
-<a name="health_check-Health"></a>
+<a name="health_check.Health"></a>
 
 ### Health
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Check | [HealthCheckRequest](#health_check-HealthCheckRequest) | [HealthCheckResponse](#health_check-HealthCheckResponse) |  |
-| Watch | [HealthCheckRequest](#health_check-HealthCheckRequest) | [HealthCheckResponse](#health_check-HealthCheckResponse) stream |  |
-
- 
-
-
-
-<a name="tasks-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## tasks.proto
-
-
-
-<a name="tasks-CreateTaskRequest"></a>
-
-### CreateTaskRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="tasks-CreateTaskResponse"></a>
-
-### CreateTaskResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="tasks-DeleteTaskRequest"></a>
-
-### DeleteTaskRequest
-
-
-
-
-
-
-
-<a name="tasks-DeleteTaskResponse"></a>
-
-### DeleteTaskResponse
-
-
-
-
-
-
-
-<a name="tasks-GetTaskRequest"></a>
-
-### GetTaskRequest
-
-
-
-
-
-
-
-<a name="tasks-GetTaskResponse"></a>
-
-### GetTaskResponse
-
-
-
-
-
-
-
-<a name="tasks-ListTasksRequest"></a>
-
-### ListTasksRequest
-
-
-
-
-
-
-
-<a name="tasks-ListTasksResponse"></a>
-
-### ListTasksResponse
-
-
-
-
-
-
-
-<a name="tasks-UpdateTaskRequest"></a>
-
-### UpdateTaskRequest
-
-
-
-
-
-
-
-<a name="tasks-UpdateTaskResponse"></a>
-
-### UpdateTaskResponse
-
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="tasks-TaskService"></a>
-
-### TaskService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CreateTask | [CreateTaskRequest](#tasks-CreateTaskRequest) | [CreateTaskResponse](#tasks-CreateTaskResponse) |  |
-| GetTask | [GetTaskRequest](#tasks-GetTaskRequest) | [GetTaskResponse](#tasks-GetTaskResponse) |  |
-| ListTasks | [ListTasksRequest](#tasks-ListTasksRequest) | [ListTasksResponse](#tasks-ListTasksResponse) |  |
-| UpdateTask | [UpdateTaskRequest](#tasks-UpdateTaskRequest) | [UpdateTaskResponse](#tasks-UpdateTaskResponse) |  |
-| DeleteTask | [DeleteTaskRequest](#tasks-DeleteTaskRequest) | [DeleteTaskResponse](#tasks-DeleteTaskResponse) |  |
+| Check | [HealthCheckRequest](#health_check.HealthCheckRequest) | [HealthCheckResponse](#health_check.HealthCheckResponse) |  |
+| Watch | [HealthCheckRequest](#health_check.HealthCheckRequest) | [HealthCheckResponse](#health_check.HealthCheckResponse) stream |  |
 
  
 
